@@ -9,17 +9,17 @@ import 'package:get/get.dart';
 enum TypeInternet { WIFI, MOBILE, NONE }
 
 class CheckInernet extends GetxService {
-  bool isShoDialog = false;
+  bool checkInternet = false;
   Connectivity connectivity = Connectivity();
   late StreamSubscription<List<ConnectivityResult>> streamSubscription;
   @override
   Future<CheckInernet> onInit() async{
     // TODO: implement onInit
     super.onInit();
-    streamSubscription = connectivity.onConnectivityChanged
-            .listen((List<ConnectivityResult> result) {
-              onCheckTypeInternet(result);
-        });
+    // streamSubscription = connectivity.onConnectivityChanged
+    //         .listen((List<ConnectivityResult> result) {
+    //           onCheckTypeInternet(result);
+    //     });
     return this;
   }
 
@@ -30,14 +30,21 @@ class CheckInernet extends GetxService {
     streamSubscription.cancel();
   }
 
+  Future<bool>voidCheckInternet() async{
+    onCheckTypeInternet(await connectivity.checkConnectivity());
+    return checkInternet;
+  }
+
   void onCheckTypeInternet(List<ConnectivityResult> result) {
     if (result.contains(ConnectivityResult.mobile)) {
       print("Mobile");
-      onShow(TypeInternet.MOBILE);
+      //onShow(TypeInternet.MOBILE);
+      checkInternet = true;
       // Mobile network available.
     } else if (result.contains(ConnectivityResult.wifi)) {
       print("wifi");
-      onShow(TypeInternet.WIFI);
+      //onShow(TypeInternet.WIFI);
+      checkInternet = true;
       // Wi-fi is available.
       // Note for Android:
       // When both mobile and Wi-Fi are turned on system will return Wi-Fi only as active network type
@@ -53,8 +60,9 @@ class CheckInernet extends GetxService {
     } else if (result.contains(ConnectivityResult.other)) {
       // Connected to a network which is not in the above mentioned networks.
     } else if (result.contains(ConnectivityResult.none)) {
+      checkInternet = false;
       print('none');
-      onShow(TypeInternet.NONE);
+      //onShow(TypeInternet.NONE);
       // No available network types
     }
   }

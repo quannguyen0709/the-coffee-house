@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:the_coffee_house_leanning/constants/app.dart';
 import 'package:the_coffee_house_leanning/pages/splash/binding.dart';
 import 'package:the_coffee_house_leanning/routes/app_pages.dart';
 import 'package:the_coffee_house_leanning/routes/app_routes.dart';
-import 'package:the_coffee_house_leanning/service/internet/check_internet.dart';
 
-void main()async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await initService();
+  FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
 
@@ -31,6 +31,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<void> initService ()async{
-  await Get.putAsync(()=>CheckInernet().onInit());
-}
+

@@ -1,0 +1,11 @@
+icons_launcher:
+  image_path: 'assets/icon_app/logo-the-coffee-house.jpg'
+  platforms:
+    android:
+      image_path: 'assets/icon_app/logo-the-coffee-house.jpg'
+      adaptive_background_color: '#ffffff'
+      adaptive_round_image: 'assets/icon_app/logo-the-coffee-house.jpg'
+      adaptive_foreground_image: 'assets/splash/white_image.png'
+      enable: true
+    ios:
+      enable: true
