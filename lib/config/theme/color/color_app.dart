@@ -19,6 +19,7 @@ import 'package:flutter/material.dart';
 class TheCoffeeHouseColor{
   static const int primaryColorValue = 0xFFE57905;
   static  Color primaryColorVariantsValue = primaryColorSwatch.shade200;
+  static Color primaryColor = primaryColorSwatch.shade700;
   static const  primaryColorSwatch  = MaterialColor(primaryColorValue, <int, Color>{
     50: Color(0xFFfdf2e0),
     100: Color(0xFFfadeb2),
@@ -42,7 +43,8 @@ class TheCoffeeHouseColor{
   static Color orangeBackgourdButton = primaryColorVariantsValue;
 
   static const backgourdWhite = Color(0xFFFFFFFF);
-  static const backgourdGrey = Color(0xFFdedede);
+  static const backgourdGrey = Color(0xFF808080);
 
   static const blackPrimary = Colors.black;
+
 }

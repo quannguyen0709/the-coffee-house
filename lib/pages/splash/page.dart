@@ -6,9 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/app.dart';
-import 'package:the_coffee_house_leanning/pages/home_page/binding.dart';
-import 'package:the_coffee_house_leanning/pages/home_page/logic.dart';
-import 'package:the_coffee_house_leanning/pages/home_page/page.dart';
 import 'package:the_coffee_house_leanning/pages/splash/logic.dart';
 import 'package:the_coffee_house_leanning/pages/splash/widget/on_board_widget.dart';
 

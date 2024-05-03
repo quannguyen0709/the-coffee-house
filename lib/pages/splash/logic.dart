@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:the_coffee_house_leanning/pages/home_page/logic.dart';
-import 'package:the_coffee_house_leanning/pages/home_page/page.dart';
 
 import '../../service/internet/check_internet.dart';
 

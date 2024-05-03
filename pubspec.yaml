@@ -31,14 +31,30 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Package most use
+#=====================================================================================
+# Package most use
+  #quản lý trạng thái theo mô hình mvvm
   get: ^4.6.6
-  google_fonts: 6.1.0
+  #font chữs gg
+  google_fonts: ^4.0.4
+  #kiểm tra kết nối internet
   connectivity_plus: 6.0.1
+  #tạo Toast nhanh gọn
   fluttertoast: ^8.2.5
+  # thay đổi splash mặc định trên mỗi hệ điều hành
   flutter_native_splash: ^2.3.11
+  #tạo icon cho app
   icons_launcher: ^2.1.7
+  #tạo file json có thể đọc tạo ra widget
+  dynamic_widget: ^5.0.0
+  #tạo custom dashboard riêng
+  dashboard: ^0.0.4
+  # dùng để import svg từ asset
+  flutter_svg: ^2.0.9
 
+
+
+#=========================================================================================
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -78,6 +94,7 @@ flutter:
   assets:
     - assets/splash/
     - assets/icon_app/
+    - assets/icon_navigation_bar/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
