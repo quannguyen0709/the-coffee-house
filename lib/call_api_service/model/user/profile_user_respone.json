@@ -1,0 +1,22 @@
+{
+  "error": null,
+  "pre_fill": null,
+  "profile_status": 1,
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTUxODQxMzEsIm5iZiI6MTcxNTE4NDEzMSwianRpIjoiZDUyNzcyYmItMDU1MS00ODM2LTgzOWEtYmM0NzI4ZTJjOTIxIiwiZXhwIjoxNzIyOTYwMTMxLCJpZGVudGl0eSI6MjA3MDMxMywiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiZXh0IjoxNzI1NTUyMTMxLCJjcm1faWQiOjE5ODQwNDUsImRpZCI6ImQwNmIzNzU1NTk4MTRlMDcwOWMwNTU1NjQxNmE4ZWVkIiwianRpIjoiZjAxYmZjMGEtNDIzZS00OWRmLWI3YzktYWEyOGMyOGI5MjBhIn19.IaOnaGkaPm14YfJq86INTi_m0VJpPWA3RO--ma5j5Po",
+  "profile": {
+    "id": 2070313,
+    "first_name": "Qu\u00e2n ",
+    "last_name": "Nguy\u1ec5n ",
+    "email": "quangquan21102002@gmail.com",
+    "birthday": "2002-10-21",
+    "birthday_str": "21/10/2002",
+    "phone": {
+      "region_code": "84",
+      "phone_number": "0769147688"
+    },
+    "avatar": "https://minio.thecoffeehouse.com/image/tchmobileapp/user_avt/default.png",
+    "gender": 1,
+    "barcode": "M162070313",
+    "rank_id": 3
+  }
+}
