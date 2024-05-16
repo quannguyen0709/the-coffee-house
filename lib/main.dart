@@ -9,7 +9,7 @@ import 'package:the_coffee_house_leanning/routes/app_routes.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.remove();
-  runApp(const MyApp());
+    runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
