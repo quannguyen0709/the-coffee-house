@@ -17,16 +17,16 @@ class ManagerPageController extends GetxController{
   final chekcInternet = Get.find<CheckInernet>();
   final bottomNavigationBar = AppPages.bottomNavigationBar;
   final  currentPage = 0.obs;
-  final Color backGroundColor = TheCoffeeHouseColor.backgourdWhite;
-  final List<Color> selectColor = [TheCoffeeHouseColor.primaryColorSwatch.shade900,  TheCoffeeHouseColor.primaryColor];
-  final Color color = TheCoffeeHouseColor.backgourdGrey;
+  final Color backGroundColor = ColorApp.backgourdWhite;
+  final List<Color> selectColor = [ColorApp.primaryColorSwatch.shade900,  ColorApp.primaryColor];
+  final Color color = ColorApp.iconColor;
   final List<String> titleBottomNavigationBar = ["Trang chủ","Đặt hàng ","Cửa hàng", " Ưu đãi ", "Khác"];
   final List<IconData> iconBottomNavigationBar = [Icons.home_outlined, Icons.local_cafe_outlined, Icons.storefront, Icons.confirmation_number, Icons.list ];
 
   @override
-  onInit(){
-    super.onInit();
+   onInit(){
     bindingPage();
+    super.onInit();
 
   }
 
@@ -45,12 +45,12 @@ class ManagerPageController extends GetxController{
     await chekcInternet.voidCheckInternet();
   }
 
-  bindingPage()  {
-    Get.put(() => HomeController());
-    Get.lazyPut(()=> OrderController());
-    Get.lazyPut(()=> ShopController());
-    Get.lazyPut(() => DiscountController());
-    Get.lazyPut(() => OtherSettingController());
+   bindingPage()  {
+    Get.put(HomeController());
+    Get.put(()=> OrderController());
+    Get.put(()=> ShopController());
+    Get.put(() => DiscountController());
+    Get.put(() => OtherSettingController());
   }
 
 

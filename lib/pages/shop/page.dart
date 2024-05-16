@@ -10,7 +10,7 @@ class ShopPage extends GetView<ShopController>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text("Cua hang ", style: TheCoffeeHouseText.textLargeSplash,),
+      body: Text("Cua hang ", style: TextStyleApp.textLargeSplash,),
     );
   }
   

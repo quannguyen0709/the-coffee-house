@@ -18,13 +18,12 @@ class ManagerPage extends GetView<ManagerPageController>{
 
   appBar() {
     return AppBar(
-      title: Text(AppConstants.APP_NAME, style:  TheCoffeeHouseText.fontIbmPlexMonoText.bodyLarge,),
+      title: Text(AppConstants.APP_NAME, style:  TextStyleApp.fontIbmPlexMonoText.bodyLarge,),
     );
   }
 
   Widget ManagerScreen() {
     return Scaffold(
-      appBar: appBar(),
       body:  Obx(() => controller.changePage()),
       bottomNavigationBar:BottomNavigationWidget(
         color: controller.color,

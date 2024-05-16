@@ -10,7 +10,7 @@ class OtherSettingPage extends GetView<OtherSettingController>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text(" Khac", style: TheCoffeeHouseText.textLargeSplash,),
+      body: Text(" Khac", style: TextStyleApp.textLargeSplash,),
     );
   }
 }

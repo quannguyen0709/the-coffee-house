@@ -1,0 +1,222 @@
+{
+  "error": null,
+  "histories": [
+    {
+      "ref": "I16905003452024",
+      "time": 1715048580,
+      "total": 78000,
+      "total_str": "<p style=\"text-align: right\">78.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 47,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I10705002362024",
+      "time": 1714699740,
+      "total": 39000,
+      "total_str": "<p style=\"text-align: right\">39.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 23,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 436,
+      "store_name": "TCHHN Hồ Tùng Mậu",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I16904011962024",
+      "time": 1713492660,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 17,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I9504008642024",
+      "time": 1713228480,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 17,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 371,
+      "store_name": "TCHHN Văn Phú",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I18404010102024",
+      "time": 1712625060,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 17,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 1166,
+      "store_name": "TCHHN Nguyễn Văn Lộc",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": {
+        "rating": 4,
+        "attention": [],
+        "comment": null
+      }
+    },
+    {
+      "ref": "I16904000882024",
+      "time": 1712030640,
+      "total": 58000,
+      "total_str": "<p style=\"text-align: right\">58.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 35,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá",
+        "Bạc Sỉu"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I18403026862024",
+      "time": 1711427280,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 17,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 1166,
+      "store_name": "TCHHN Nguyễn Văn Lộc",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I16903002552024",
+      "time": 1709600460,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 17,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I16901002192024",
+      "time": 1704338100,
+      "total": 143000,
+      "total_str": "<p style=\"text-align: right\">143.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 84,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Trà Sữa Oolong BLao",
+        "Trà Xanh Latte",
+        "Trà Hạt Sen"
+      ],
+      "rating": null
+    },
+    {
+      "ref": "I16901000482024",
+      "time": 1704160560,
+      "total": 29000,
+      "total_str": "<p style=\"text-align: right\">29.000đ</p>",
+      "order_type_str": "Tại cửa hàng",
+      "order_type": "ots",
+      "type": "STORE",
+      "bean": 18,
+      "image": "",
+      "thumbnail": "",
+      "status": null,
+      "message": "",
+      "store_id": 553,
+      "store_name": "TCHHN Nguyễn Tuân",
+      "address": "",
+      "products": [
+        "Cà Phê Sữa Đá"
+      ],
+      "rating": null
+    }
+  ]
+}

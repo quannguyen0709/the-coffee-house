@@ -10,7 +10,7 @@ class OrderPage extends GetView<OrderController>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text(" Dat hang ", style: TheCoffeeHouseText.textLargeSplash,),
+      body: Text(" Dat hang ", style: TextStyleApp.textLargeSplash,),
     );
   }
   

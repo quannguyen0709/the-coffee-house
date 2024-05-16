@@ -75,7 +75,7 @@ class _BottomNavigationWidget extends State<BottomNavigationWidget> {
   }
 
   Widget itemWidgetNavigation(bool select, int item) {
-    var fontFamily = TheCoffeeHouseText.fontMontserratButton;
+    var fontFamily = TextStyleApp.fontNotoSansButton;
 
     Color colorItemIcon = select ? widget.selectColor.first: widget.color;
     Color colorItemText = select ? widget.selectColor.last: widget.color;

@@ -1,11 +1,12 @@
 icons_launcher:
-  image_path: 'assets/icon_app/logo-the-coffee-house.jpg'
+  image_path: 'assets/icon_app/logo_the_coffee_house.png_.png'
   platforms:
     android:
-      image_path: 'assets/icon_app/logo-the-coffee-house.jpg'
+      image_path: 'assets/icon_app/logo_the_coffee_house.png_.png'
       adaptive_background_color: '#ffffff'
-      adaptive_round_image: 'assets/icon_app/logo-the-coffee-house.jpg'
-      adaptive_foreground_image: 'assets/splash/white_image.png'
+      adaptive_round_image: 'assets/icon_app/logo_the_coffee_house.png_.png'
+      adaptive_foreground_image: 'assets/icon_app/logo_the_coffee_house.png_.png'
+      adaptive_monochrome_image: 'assets/icon_app/logo_the_coffee_house.png_.png'
       enable: true
     ios:
       enable: true

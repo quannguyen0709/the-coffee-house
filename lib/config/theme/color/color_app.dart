@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
     800: Color(0xFF),
     900: Color(0xFF)*/
 
-class TheCoffeeHouseColor{
+class  ColorApp{
   static const int primaryColorValue = 0xFFE57905;
   static  Color primaryColorVariantsValue = primaryColorSwatch.shade200;
   static Color primaryColor = primaryColorSwatch.shade700;
@@ -44,6 +44,13 @@ class TheCoffeeHouseColor{
 
   static const backgourdWhite = Color(0xFFFFFFFF);
   static const backgourdGrey = Color(0xFF808080);
+
+  static const textGrey = Color(0xFF808080);
+  static const shadow  = Color(0xFFB8B8B8);
+
+
+
+  static const iconColor = Color(0xFF808080);
 
   static const blackPrimary = Colors.black;
 

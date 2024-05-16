@@ -11,7 +11,7 @@ class DiscountPage extends GetView<DiscountController>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Text("UU dai", style: TheCoffeeHouseText.textLargeSplash,),
+      body: Text("UU dai", style: TextStyleApp.textLargeSplash,),
     );
   }
 

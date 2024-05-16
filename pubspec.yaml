@@ -32,33 +32,46 @@ dependencies:
     sdk: flutter
 
 #=====================================================================================
-# Package most use
-  #quản lý trạng thái theo mô hình mvvm
-  get: ^4.6.6
-  #font chữs gg
-  google_fonts: ^4.0.4
-  #kiểm tra kết nối internet
-  connectivity_plus: 6.0.1
-  #tạo Toast nhanh gọn
-  fluttertoast: ^8.2.5
-  # thay đổi splash mặc định trên mỗi hệ điều hành
-  flutter_native_splash: ^2.3.11
-  #tạo icon cho app
-  icons_launcher: ^2.1.7
-  #tạo file json có thể đọc tạo ra widget
-  dynamic_widget: ^5.0.0
-  #tạo custom dashboard riêng
-  dashboard: ^0.0.4
-  # dùng để import svg từ asset
-  flutter_svg: ^2.0.9
+# Package most use                                                                   #
+  #quản lý trạng thái theo mô hình mvvm                                              #
+  get: ^4.6.6                                                                        #
+  #font chữs gg                                                                      #
+  google_fonts: ^4.0.4                                                               #
+  #kiểm tra kết nối internet                                                         #
+  connectivity_plus: 6.0.1                                                           #
+  #tạo Toast nhanh gọn                                                               #
+  toastification: ^2.0.0                                                             #
+  # thay đổi splash mặc định trên mỗi hệ điều hành                                   #
+  flutter_native_splash: ^2.3.11                                                     #
+  #tạo icon cho app                                                                  #
+  icons_launcher: ^2.1.7                                                             #
+  #tạo file json có thể đọc tạo ra widget                                            #
+  dynamic_widget: ^5.0.0                                                             #
+  #tạo custom dashboard riêng                                                        #
+  dashboard: ^0.0.4                                                                  #
+  # dùng để import svg từ asset                                                      #
+  flutter_svg: ^2.0.9                                                                #
+  #tạo auto slide hình ảnh                                                           #
+  carousel_slider: ^4.2.1
+  #tọa thể hiện loadding chỉ bằng cách bọc widget của mình
+  redacted: ^1.0.11
+  #load image from internet
+  cached_network_image: ^3.3.1
+  # dùng để get api
+  dio: ^5.4.3+1
+  #tạo anottion để đọc json
+  json_annotation: ^4.9.0
+  #mock dio
 
 
 
-#=========================================================================================
+
+#=====================================================================================
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
 
 
 
@@ -73,6 +86,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.9
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -95,6 +110,8 @@ flutter:
     - assets/splash/
     - assets/icon_app/
     - assets/icon_navigation_bar/
+    - assets/carousel_slider_image/
+    - assets/dedfault_config_resouce/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
