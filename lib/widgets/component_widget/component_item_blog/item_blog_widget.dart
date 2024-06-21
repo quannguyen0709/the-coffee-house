@@ -5,6 +5,8 @@ import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 
+import '../../../pages/home/logic.dart';
+
 class ItemBlogWidget extends StatelessWidget {
   final double height;
   final double width;
@@ -12,7 +14,7 @@ class ItemBlogWidget extends StatelessWidget {
   final String title;
   final String description;
   final String time;
-  final void Function() actionClick;
+  final void Function(String idAction, TypeAction action ) actionClick;
 
   ItemBlogWidget(
       {required this.height,
@@ -44,7 +46,7 @@ class ItemBlogWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: magin, bottom:  magin , left:  magin),
       child: GestureDetector(
         onTap: () {
-          actionClick();
+          actionClick('blog', TypeAction.BLOCK_ITEM_BLOG);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

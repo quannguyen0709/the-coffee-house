@@ -5,14 +5,17 @@ import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 
+import '../../../pages/home/logic.dart';
+
 class ItemOrderWidget extends StatelessWidget {
   final double height;
   final double width;
   final Widget image;
   final String nameItem;
   final String description;
-  final void Function() actionClickButton;
-  final void Function() actionIemOrder;
+  final String id;
+  final void Function(String idAction, TypeAction action ) actionClickButton;
+  final void Function(String idAction, TypeAction action ) actionIemOrder;
 
   ItemOrderWidget(
       {required this.height,
@@ -21,7 +24,8 @@ class ItemOrderWidget extends StatelessWidget {
       required this.nameItem,
       required this.description,
       required this.actionClickButton,
-      required this.actionIemOrder});
+      required this.actionIemOrder,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,7 @@ class ItemOrderWidget extends StatelessWidget {
     final textStyleTitle = TextStyleApp.fontNotoSansTitle;
     return  GestureDetector(
         onTap: () {
-          actionIemOrder();
+          actionIemOrder('widgetAction_$id', TypeAction.BLOCK_ITEM_ORDER);
         },
         child:  Column(
           crossAxisAlignment:  CrossAxisAlignment.start,
@@ -92,7 +96,7 @@ class ItemOrderWidget extends StatelessWidget {
           child: InkWell(
             // Splash color
             onTap: () {
-              actionClickButton();
+              actionClickButton('iconButton_$id', TypeAction.BLOCK_ITEM_ORDER);
             },
             child: Icon(
               icon,

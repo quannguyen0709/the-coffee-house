@@ -23,6 +23,9 @@ class ManagerPageController extends GetxController{
   final List<String> titleBottomNavigationBar = ["Trang chủ","Đặt hàng ","Cửa hàng", " Ưu đãi ", "Khác"];
   final List<IconData> iconBottomNavigationBar = [Icons.home_outlined, Icons.local_cafe_outlined, Icons.storefront, Icons.confirmation_number, Icons.list ];
 
+  static final checkScroll = false.obs;
+
+
   @override
    onInit(){
     bindingPage();
@@ -31,8 +34,11 @@ class ManagerPageController extends GetxController{
   }
 
   void onSelectItemNavigationBottom(int item){
-    if(item != currentPage){
+    if(item != currentPage.value){
       currentPage.value = item;
+    }
+    else if (item == currentPage.value){
+      checkScroll.value = true;
     }
   }
 

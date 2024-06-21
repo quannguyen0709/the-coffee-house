@@ -6,8 +6,10 @@ import 'package:the_coffee_house_leanning/config/theme/shape/shape_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 
+import '../../../pages/home/logic.dart';
+
 class SearchBarWidget extends StatelessWidget {
-  final void Function() actionClick;
+  final void Function(String idAction, TypeAction action) actionClick;
   final double height;
   SearchBarWidget(
       {required this.actionClick, required this.height});
@@ -36,7 +38,7 @@ class SearchBarWidget extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(shape))),
           child: GestureDetector(
             onTap: () {
-              actionClick();
+              actionClick('search', TypeAction.BLOCK_ITEM_SEARCH);
             },
             child: Row(
               children: [
@@ -56,7 +58,7 @@ class SearchBarWidget extends StatelessWidget {
   }
 }
 
-Widget buttonFavorite(void Function() actionButton) {
+Widget buttonFavorite(void Function(String idAction, TypeAction action) actionButton) {
   final double widthButton = 10.0.wp;
   const IconData icon = Icons.favorite_border;
   final colorIcon = ColorApp.primaryColorSwatch.shade900;
@@ -73,7 +75,7 @@ Widget buttonFavorite(void Function() actionButton) {
         borderRadius: BorderRadius.all(Radius.circular(radius))),
     child: GestureDetector(
       onTap: () {
-        actionButton();
+        actionButton('favorite', TypeAction.BLOCK_ITEM_SEARCH);
       },
       child: Center(
         child: Icon(

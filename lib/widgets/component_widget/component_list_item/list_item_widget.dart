@@ -9,16 +9,20 @@ import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/widgets/component_widget/component_list_item/searchBar.dart';
 
+import '../../../pages/home/logic.dart';
+
 class ListItem extends StatelessWidget {
   late  Widget image;
   late  String label;
-  final void Function() actionItem;
+  final void Function(String idAction, TypeAction action) actionItem;
   final Widget searchBar;
   final Widget favoriteButton;
   final List<dynamic> list;
+  final int indexLive;
 
   ListItem(
-      {required this.list,
+      {required this.indexLive,
+      required this.list,
       required this.actionItem,
       required this.searchBar,
       required this.favoriteButton});
@@ -73,7 +77,7 @@ class ListItem extends StatelessWidget {
                       itemBuilder: (context, index) {
                         label = list[index][1];
                         image = list[index][0];
-                        return itemWidget();
+                        return itemWidget(index);
                       },
                     ),
                   ),
@@ -82,16 +86,19 @@ class ListItem extends StatelessWidget {
     ]);
   }
 
-  Widget itemWidget() {
+  Widget itemWidget(int index) {
     final double widthImage = 10.0.wp;
     final double magin = 2.0.wp;
+
+
     final TextStyle textStyle = TextStyleApp.fontNotoSansDescription.copyWith(fontSize: 10.0);
     return Expanded(
       child: Container(
           margin: EdgeInsets.all(magin),
           child: GestureDetector(
             onTap: () {
-              actionItem();
+              final id = (index+ indexLive).toString() + '_' + list[index][1].toString();
+              actionItem(id , TypeAction.BLOCK_ITEM_SEARCH);
             },
             child: Column(
               children: [
