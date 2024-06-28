@@ -44,23 +44,18 @@ class ItemBlogWidget extends StatelessWidget {
       height: height,
       width: width,
       margin: EdgeInsets.only(top: magin, bottom:  magin , left:  magin),
-      child: GestureDetector(
-        onTap: () {
-          actionClick('blog', TypeAction.BLOCK_ITEM_BLOG);
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              height: width,
-              child: image,
-            ),
-            Text(description, style: textStyleDescription),
-            Text(title, style: textStyleTitle, overflow: TextOverflow.ellipsis),
-            timeWidget(),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            height: width,
+            child: image,
+          ),
+          Text(description, style: textStyleDescription),
+          Text(title, style: textStyleTitle, overflow: TextOverflow.ellipsis),
+          timeWidget(),
+        ],
       ),
     );
   }

@@ -1,14 +1,18 @@
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
-import 'package:the_coffee_house_leanning/pages/home/widget/widget.dart';
+import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
+import 'package:the_coffee_house_leanning/pages/home/widget/item_order_bottom_sheet.dart';
+import 'package:the_coffee_house_leanning/pages/home/widget/web_view_post.dart';
 import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 import 'package:the_coffee_house_leanning/repository/model/app_model.dart';
 import 'package:the_coffee_house_leanning/widgets/image_widget/image_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../repository/model/menu /menu.dart';
 import '../../repository/model/new_feed/new_feed.dart';
@@ -53,10 +57,6 @@ class HomeController extends GetxController {
     itemPositionsListenerScreen.itemPositions.addListener(() {
       return _logVisibleItems();
     },);
-    scrollOffsetListener.changes.listen((event) {
-      offSetChange.value = event;
-      print('offset: ' + offSetChange.value.toString());
-    });
   }
 
   void _logVisibleItems() {
@@ -156,20 +156,28 @@ class HomeController extends GetxController {
       print('favorite in action item search');
     } else {
       final action = idAction.split('_')[0];
-      itemScrollControllerScreen.jumpTo(index: int.parse(action));
+      itemScrollControllerScreen.scrollTo(index: int.parse(action), duration: Duration(milliseconds: 500));
     }
   }
 
-  void actionItemBlog(String idAction) {}
+  void actionItemBlog(String idAction) async{
+    if(listPost.containsKey(idAction)){
+       Post itemBlog = await listPost.getOrNull(idAction);
+      print(itemBlog);
+
+      Get.to(WebViewPost(linkUrl: itemBlog.url, itemPost: itemBlog));
+
+    }
+  }
 
   void actionItemOrder(String idAction) {
     final checkId = idAction.split('_');
     priceChose = 0;
     switch(checkId[0]){
       case 'widgetAction':
-        BottomApppSheet().bottomSheetItemOrder(Get.context!, findProduct(checkId), priceChose);
+        BottomApppSheetOrder().bottomSheetItemOrder(Get.context!, findProduct(checkId), priceChose);
       case 'iconButton'  :
-        BottomApppSheet().bottomSheetItemOrder(Get.context!, findProduct(checkId), priceChose);
+        BottomApppSheetOrder().bottomSheetItemOrder(Get.context!, findProduct(checkId), priceChose);
     }
   }
 

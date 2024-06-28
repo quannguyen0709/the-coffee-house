@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
-import 'package:the_coffee_house_leanning/pages/home/widget/widget.dart';
+import 'package:the_coffee_house_leanning/pages/home/widget/item_order_bottom_sheet.dart';
 
 import '../../../config/theme/color/color_app.dart';
 import '../../../repository/model/menu /menu.dart';
@@ -111,15 +111,15 @@ class ListOptionWidget extends StatelessWidget {
           shrinkWrap: true,
           itemCount: elementAt.listItems.length,
           itemBuilder: (context, index) {
-            singleChosePrice = elementAt.listItems
-                .elementAt(index)
-                .price;
-            actionChoseOption(basePrice + singleChosePrice + multiChosePrice);
             final check = itemCheck.id == elementAt.listItems[index].id;
             return GestureDetector(
               onTap: () {
                 setState(() {
                   itemCheck = elementAt.listItems.elementAt(index);
+                  singleChosePrice = elementAt.listItems
+                      .elementAt(index)
+                      .price;
+                  actionChoseOption(basePrice + singleChosePrice + multiChosePrice);
                 });
               },
               child: Column(
@@ -179,12 +179,10 @@ class ListOptionWidget extends StatelessWidget {
         for (var element in elementAt.listItems) {
           if (listItemCheck.contains(element)) {
             check.add(true);
-            multiChosePrice = multiChosePrice + element.price;
           } else {
             check.add(false);
           }
         }
-        actionChoseOption(basePrice + singleChosePrice + multiChosePrice);
         return Container(
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
@@ -193,22 +191,31 @@ class ListOptionWidget extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
+                  final priceAdd = elementAt.listItems.elementAt(index).price;
+
                   if (listItemCheck.length < elementAt.max) {
                     if (listItemCheck
                         .contains(elementAt.listItems.elementAt(index))) {
                       setState(() {
+                        multiChosePrice = multiChosePrice - priceAdd;
+                        actionChoseOption(basePrice  + singleChosePrice + multiChosePrice );
                         listItemCheck
                             .remove(elementAt.listItems.elementAt(index));
                       });
                     } else {
                       setState(() {
+                        multiChosePrice = multiChosePrice + priceAdd;
+                        actionChoseOption(basePrice  + singleChosePrice + multiChosePrice);
                         listItemCheck.add(elementAt.listItems.elementAt(index));
+
                       });
                     }
                   } else if (listItemCheck.length == elementAt.max) {
                     if (listItemCheck
                         .contains(elementAt.listItems.elementAt(index))) {
                       setState(() {
+                        multiChosePrice = multiChosePrice - priceAdd;
+                        actionChoseOption(basePrice  + singleChosePrice + multiChosePrice );
                         listItemCheck
                             .remove(elementAt.listItems.elementAt(index));
                       });
@@ -218,6 +225,7 @@ class ListOptionWidget extends StatelessWidget {
                   } else {
                     setState(() {});
                   }
+
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

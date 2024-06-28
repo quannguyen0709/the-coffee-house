@@ -6,6 +6,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
+import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
 import 'package:the_coffee_house_leanning/pages/home/logic.dart';
 import 'package:the_coffee_house_leanning/widgets/carousel_slider/carousel_silde.dart';
 import 'package:the_coffee_house_leanning/widgets/component_widget/component_item_blog/item_blog_widget.dart';
@@ -101,7 +102,7 @@ class HomePage extends GetView<HomeController> {
         itemList: controller.itemListCarouselSilder,
       ),
       Container(
-        height: 35.0.hp,
+        height: 38.0.hp,
         child: listBlogPost(),
       ),
       ListItem(
@@ -115,7 +116,6 @@ class HomePage extends GetView<HomeController> {
           )),
     ];
     return ScrollablePositionedList.builder(
-      scrollOffsetListener: controller.scrollOffsetListener,
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
       itemCount: listWidgetInBodySliver.length + listWidgetFilter.length,
@@ -195,19 +195,24 @@ class HomePage extends GetView<HomeController> {
             scrollDirection: Axis.horizontal,
             itemCount: listPost.length,
             itemBuilder: (context, index) {
-              return ItemBlogWidget(
-                  height: height,
-                  description: listPost.keys.elementAt(index).split(":")[0],
-                  width: width,
-                  image: widgetImageNetWork(
-                      listPost[listPost.keys.elementAt(index)]!.thumbnail),
-                  time: listPost[listPost.keys.elementAt(index)]!
-                      .publish
-                      .toString(),
-                  title: listPost[listPost.keys.elementAt(index)]!
-                      .title
-                      .toString(),
-                  actionClick: controller.actionClickButton);
+              return GestureDetector(
+                onTap: (){
+                  controller.actionClickButton(listPost.keys.elementAt(index), TypeAction.BLOCK_ITEM_BLOG);
+                },
+                child: ItemBlogWidget(
+                    height: height,
+                    description: listPost.keys.elementAt(index).split(":")[0],
+                    width: width,
+                    image: widgetImageNetWork(
+                        listPost[listPost.keys.elementAt(index)]!.thumbnail),
+                    time: listPost[listPost.keys.elementAt(index)]!
+                        .publish
+                        .toString(),
+                    title: listPost[listPost.keys.elementAt(index)]!
+                        .title
+                        .toString(),
+                    actionClick: controller.actionClickButton),
+              );
             },
           ),
         )
@@ -221,40 +226,43 @@ class HomePage extends GetView<HomeController> {
     TextStyle textStyle = TextStyleApp.fontNotoSansTitle.copyWith(fontSize: 16);
     int maxLine = 1;
     TextOverflow textOverflow = TextOverflow.ellipsis;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-            child: Text(
-          textLabel,
-          style: textStyle,
-        )),
-        GestureDetector(
-          onTap: () {
-            controller.actionClickButton(
-                'Khams phas ',
-                context: Get.context,
-                TypeAction.BLOCK_ITEM_BLOG);
-          },
-          child: Row(
-            children: [
-              Container(
-                width: 15.0.wp,
-                child: Text(
-                  textDetail,
-                  style: textStyle.copyWith(color: ColorApp.primaryColor),
-                  overflow: textOverflow,
-                  maxLines: maxLine,
+    return Container(
+      height: 5.0.hp,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+              child: Text(
+            textLabel,
+            style: textStyle,
+          )),
+          GestureDetector(
+            onTap: () {
+              controller.actionClickButton(
+                  'Khams phas ',
+                  context: Get.context,
+                  TypeAction.BLOCK_ITEM_BLOG);
+            },
+            child: Row(
+              children: [
+                Container(
+                  width: 15.0.wp,
+                  child: Text(
+                    textDetail,
+                    style: textStyle.copyWith(color: ColorApp.primaryColor),
+                    overflow: textOverflow,
+                    maxLines: maxLine,
+                  ),
                 ),
-              ),
-              Icon(
-                Icons.chevron_right,
-                color: ColorApp.primaryColor,
-              )
-            ],
-          ),
-        )
-      ],
+                Icon(
+                  Icons.chevron_right,
+                  color: ColorApp.primaryColor,
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
