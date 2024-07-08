@@ -19,13 +19,14 @@ class ListItem extends StatelessWidget {
   final Widget favoriteButton;
   final List<dynamic> list;
   final int indexLive;
+  bool toolBar ;
 
   ListItem(
       {required this.indexLive,
       required this.list,
       required this.actionItem,
       required this.searchBar,
-      required this.favoriteButton});
+      required this.favoriteButton, required this.toolBar});
 
   @override
   Widget build(BuildContext context) {
@@ -34,56 +35,65 @@ class ListItem extends StatelessWidget {
   }
 
   Widget listItem() {
-    ScrollController controller = ScrollController();
     final height = 30.0.hp;
     final width = 100.0.wp;
     final magin = 5.0.wp;
     final gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0);
     final colorBackGround = ColorApp.backgourdWhite;
-    return Stack(children: [
-      Container(
-        margin: EdgeInsets.all(magin),
-        width: width,
-        height: height,
-        decoration: ShadowApp.smallShadow,
-      ),
-      Container(
+
+    final barScroll = ScrollController();
+
+    return  Container(
+      height: height + magin*2,
+      width: width,
+      child: Stack(
+          children: [
+        Container(
           margin: EdgeInsets.all(magin),
           width: width,
           height: height,
-          decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(ShapeApp.extraLarge)),
-              color: colorBackGround),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  children: [searchBar, favoriteButton],
-                ),
-                Expanded(
-                  child: RawScrollbar(
-
-                    thickness: 0.5.wp,
-                    thumbColor: ColorApp.primaryColor,
-                    radius: Radius.circular(ShapeApp.extraLarge),
-                    thumbVisibility:  true ,
-                    controller: controller,
-                    child: GridView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: list.length,
-                      gridDelegate: gridDelegate,
-                      itemBuilder: (context, index) {
-                        label = list[index][1];
-                        image = list[index][0];
-                        return itemWidget(index);
-                      },
+          decoration: ShadowApp.smallShadow,
+        ),
+        Container(
+            margin: EdgeInsets.all(magin),
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+                borderRadius:
+                BorderRadius.all(Radius.circular(ShapeApp.extraLarge)),
+                color: colorBackGround),
+            child: Column(
+                children: [
+                  Container(
+                    height: 6.0.hp,
+                    child: Row(
+                      children: [searchBar, favoriteButton],
                     ),
                   ),
-                )
-              ]))
-    ]);
+                  Expanded(
+                    child: RawScrollbar(
+                      thickness: 0.5.wp,
+                      controller: barScroll,
+                      thumbColor: ColorApp.primaryColor,
+                      radius: Radius.circular(ShapeApp.extraLarge),
+                      thumbVisibility:  true ,
+                      child: GridView.builder(
+                        controller: barScroll,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: list.length,
+                        gridDelegate: gridDelegate,
+                        itemBuilder: (context, index) {
+                          label = list[index][1];
+                          image = list[index][0];
+                          return itemWidget(index);
+                        },
+                      ),
+                    ),
+                  )
+                ]))
+      ]),
+    );
   }
 
   Widget itemWidget(int index) {
@@ -92,28 +102,59 @@ class ListItem extends StatelessWidget {
 
 
     final TextStyle textStyle = TextStyleApp.fontNotoSansDescription.copyWith(fontSize: 10.0);
-    return Expanded(
-      child: Container(
-          margin: EdgeInsets.all(magin),
-          child: GestureDetector(
-            onTap: () {
-              final id = (index+ indexLive).toString() + '_' + list[index][1].toString();
-              actionItem(id , TypeAction.BLOCK_ITEM_SEARCH);
-            },
-            child: Column(
-              children: [
-                Expanded(flex: 5, child: image),
-                Flexible(
-                  flex: 3,
-                  child: Text(
-                    label,
-                    style: textStyle,
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            ),
-          )),
+    return Container(
+      width: widthImage,
+        height: widthImage*1.4,
+        margin: EdgeInsets.all(magin),
+        child: GestureDetector(
+          onTap: () {
+            final id = (index+ indexLive).toString() + '_' + list[index][1].toString();
+            actionItem(id , TypeAction.BLOCK_ITEM_SEARCH);
+          },
+          child: Column(
+            children: [
+             Container(
+               height: widthImage,
+               child: image,
+             ),
+              Container(
+                margin: EdgeInsets.only(top: 1.0.wp),
+                child: Text(
+                  label,
+                  style: textStyle,
+                  textAlign: TextAlign.center,
+                ),
+              )
+            ],
+          ),
+        ));
+  }
+
+  Widget listItemNonToolBar(double height) {
+    final barScroll = ScrollController();
+    final gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0);
+    return Container(
+      margin: EdgeInsets.only(top: 3.0.wp, bottom:  3.0.wp),
+      height: height,
+      child:  RawScrollbar(
+        thickness: 0.5.wp,
+        controller: barScroll,
+        thumbColor: ColorApp.primaryColor,
+        radius: Radius.circular(ShapeApp.extraLarge),
+        thumbVisibility:  true ,
+        child: GridView.builder(
+          controller: barScroll,
+          scrollDirection: Axis.horizontal,
+          itemCount: list.length,
+          gridDelegate: gridDelegate,
+          itemBuilder: (context, index) {
+            label = list[index][1];
+            image = list[index][0];
+            return itemWidget(index);
+          },
+        ),
+      )
     );
   }
 }

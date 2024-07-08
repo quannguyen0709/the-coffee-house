@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
 import 'package:the_coffee_house_leanning/pages/home/widget/item_order_bottom_sheet.dart';
 import 'package:the_coffee_house_leanning/pages/home/widget/web_view_post.dart';
 import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 import 'package:the_coffee_house_leanning/repository/model/app_model.dart';
 import 'package:the_coffee_house_leanning/widgets/image_widget/image_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../repository/model/menu /menu.dart';
 import '../../repository/model/new_feed/new_feed.dart';
@@ -25,7 +23,7 @@ class HomeController extends GetxController {
 
   AppModel appModel = AppModel().instance;
 
-  final managerControll = ManagerPageController.checkScroll;
+  final managerControll = ManagerPageController.checkScroll.elementAt(0);
 
   List<String> itemListCarouselSilder = [];
   List<dynamic> listMenu = [];
@@ -34,17 +32,13 @@ class HomeController extends GetxController {
   Map<String, Post> listPost = {};
 
 
-  final List<int> visibleIndexes = [];
+  List<ItemPosition> visibleIndexes = [];
   final int listIndexLive = 3;
   final  firstIndex = 0.obs;
   final checkChangeIcon = false.obs;
 
-  final offSetChange = 0.0.obs;
-  final ScrollOffsetListener scrollOffsetListener = ScrollOffsetListener.create();
-  final ItemScrollController itemScrollControllerScreen =
-      ItemScrollController();
-  final ItemPositionsListener itemPositionsListenerScreen =
-      ItemPositionsListener.create();
+  late ItemScrollController itemScrollControllerScreen;
+  late ItemPositionsListener itemPositionsListenerScreen;
 
   var priceChose = 0 ;
 
@@ -53,35 +47,36 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    itemScrollControllerScreen = ItemScrollController();
+    itemPositionsListenerScreen = ItemPositionsListener.create();
+
+
     loadData();
     itemPositionsListenerScreen.itemPositions.addListener(() {
-      return _logVisibleItems();
+       _logVisibleItems();
     },);
   }
 
   void _logVisibleItems() {
-    final positions = itemPositionsListenerScreen.itemPositions.value;
-     visibleIndexes.clear();
-    positions.forEach((element) {visibleIndexes.add(element.index);});
+    visibleIndexes.clear();
+    visibleIndexes = itemPositionsListenerScreen.itemPositions.value.toList();
 
     checkIndexFirst(visibleIndexes);
     print('Visible items: $visibleIndexes');
   }
 
-  void checkIndexFirst(List<int> visibleIndexes) {
-    if(visibleIndexes.first < listIndexLive){
+  void checkIndexFirst(List<ItemPosition> visibleIndexes) {
+    if(visibleIndexes.first.index < listIndexLive){
       checkChangeIcon.value = false;
-      firstIndex.value = visibleIndexes.first;
+      firstIndex.value = visibleIndexes.first.index;
     }else{
       checkChangeIcon.value = true;
-      firstIndex.value = visibleIndexes.first - listIndexLive;
+      firstIndex.value = visibleIndexes.first.index  - listIndexLive;
     }
   }
 
 
-  bool checkOffSet(){
-    return offSetChange.value < 0 ;
-  }
 
 
 
@@ -134,13 +129,13 @@ class HomeController extends GetxController {
   }
 
   void actionClickButton(String idAction, TypeAction action,
-      {BuildContext? context}) {
+      {BuildContext? context, Post? post}) {
     switch (action) {
       case TypeAction.BLOCK_ITEM_SEARCH:
         actionItemSearch(idAction);
 
       case TypeAction.BLOCK_ITEM_BLOG:
-        actionItemBlog(idAction);
+        actionItemBlog(idAction: idAction, post:  post);
 
       case TypeAction.BLOCK_ITEM_ORDER:
         actionItemOrder(idAction);
@@ -160,13 +155,15 @@ class HomeController extends GetxController {
     }
   }
 
-  void actionItemBlog(String idAction) async{
+  void actionItemBlog({String? idAction, Post? post}) async{
     if(listPost.containsKey(idAction)){
        Post itemBlog = await listPost.getOrNull(idAction);
       print(itemBlog);
 
       Get.to(WebViewPost(linkUrl: itemBlog.url, itemPost: itemBlog));
 
+    }else if(post != null){
+      Get.to(WebViewPost(linkUrl: post.url, itemPost: post));
     }
   }
 
