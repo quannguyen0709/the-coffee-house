@@ -8,6 +8,8 @@ class TextStyleApp {
       fontStyle: FontStyle.normal, fontWeight: FontWeight.w900, fontSize: 12);
   static final fontNotoSansTitle  = GoogleFonts.radioCanada().copyWith(
       fontStyle: FontStyle.normal, fontWeight: FontWeight.w900  , fontSize: 14);
+  static final fontNotoSansLarge  = GoogleFonts.radioCanada().copyWith(
+      fontStyle: FontStyle.normal, fontWeight: FontWeight.w900  , fontSize: 18);
   static final fontNotoSansDescription = GoogleFonts.radioCanada().copyWith(
       fontStyle: FontStyle.normal, fontWeight: FontWeight.bold, fontSize: 12);
 

@@ -5,14 +5,17 @@ import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 
+import '../../../pages/home/logic.dart';
+
 class ItemOrderWidget extends StatelessWidget {
   final double height;
   final double width;
   final Widget image;
   final String nameItem;
   final String description;
-  final void Function() actionClickButton;
-  final void Function() actionIemOrder;
+  final String id;
+  final void Function(String idAction, TypeAction action) actionClickButton;
+  final void Function(String idAction, TypeAction action) actionIemOrder;
 
   ItemOrderWidget(
       {required this.height,
@@ -21,18 +24,17 @@ class ItemOrderWidget extends StatelessWidget {
       required this.nameItem,
       required this.description,
       required this.actionClickButton,
-      required this.actionIemOrder});
+      required this.actionIemOrder,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     if (width <= 50.0.wp) {
-      return Expanded(
-        child: Container(
-            width: 40.0.wp,
-            margin: EdgeInsets.all(5.0.wp),
-            child: itemWidgetColum()),
-      );
+      return Container(
+          width: 40.0.wp,
+          margin: EdgeInsets.all(5.0.wp),
+          child: itemWidgetColum());
     } else {
       return itemWidgetRow();
     }
@@ -42,17 +44,17 @@ class ItemOrderWidget extends StatelessWidget {
     final widthImage = 40.0.wp;
     final textStyleDescription = TextStyleApp.fontNotoSansDescription;
     final textStyleTitle = TextStyleApp.fontNotoSansTitle;
-    return  GestureDetector(
+    return GestureDetector(
         onTap: () {
-          actionIemOrder();
+          actionIemOrder('widgetAction_$id', TypeAction.BLOCK_ITEM_ORDER);
         },
-        child:  Column(
-          crossAxisAlignment:  CrossAxisAlignment.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               width: widthImage,
-              height: widthImage*1.1,
+              height: widthImage * 1.1,
               child: image,
             ),
             Container(
@@ -73,16 +75,13 @@ class ItemOrderWidget extends StatelessWidget {
                   Spacer(),
                   iconButton()
                 ]),
-
           ],
-        )
-    );
+        ));
   }
 
-  Widget iconButton() {
+  Widget iconButton({double? width}) {
     final icon = Icons.add;
     final colorIcon = Colors.white;
-    final width = 6.0.wp;
     return SizedBox(
       height: width,
       width: width,
@@ -92,12 +91,12 @@ class ItemOrderWidget extends StatelessWidget {
           child: InkWell(
             // Splash color
             onTap: () {
-              actionClickButton();
+              actionClickButton('iconButton_$id', TypeAction.BLOCK_ITEM_ORDER);
             },
             child: Icon(
               icon,
               color: colorIcon,
-              size: width / 2,
+              size: width == null ? (6.0.wp) : width ,
             ),
           ),
         ),
@@ -106,8 +105,48 @@ class ItemOrderWidget extends StatelessWidget {
   }
 
   Widget itemWidgetRow() {
-    return Placeholder(
-      fallbackWidth: width,
+    final textStyleDescription = TextStyleApp.fontNotoSansDescription;
+    final textStyleTitle = TextStyleApp.fontNotoSansTitle;
+    return GestureDetector(
+      onTap: () {
+        actionIemOrder('widgetAction_$id', TypeAction.BLOCK_ITEM_ORDER);
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp,top: 3.0.wp, bottom: 3.0.wp),
+        height: height,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 3.0.wp),
+              width: height*0.95,
+              height: height,
+              child: image,
+            ),
+            Expanded(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  nameItem,
+                  style: textStyleTitle,
+                ),
+                Text(
+                  description,
+                  style: textStyleDescription,
+                )
+              ],
+            )),
+            Container(
+              margin: EdgeInsets.only(left: 2.0.wp),
+              width: 8.0.wp,
+              child: Center(child: iconButton(width: 7.0.wp)),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

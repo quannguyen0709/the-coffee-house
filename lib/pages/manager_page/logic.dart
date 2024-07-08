@@ -23,6 +23,9 @@ class ManagerPageController extends GetxController{
   final List<String> titleBottomNavigationBar = ["Trang chủ","Đặt hàng ","Cửa hàng", " Ưu đãi ", "Khác"];
   final List<IconData> iconBottomNavigationBar = [Icons.home_outlined, Icons.local_cafe_outlined, Icons.storefront, Icons.confirmation_number, Icons.list ];
 
+  static final checkScroll = [false.obs, false.obs, false.obs, false.obs, false.obs];
+
+
   @override
    onInit(){
     bindingPage();
@@ -31,8 +34,22 @@ class ManagerPageController extends GetxController{
   }
 
   void onSelectItemNavigationBottom(int item){
-    if(item != currentPage){
+    if(item != currentPage.value){
       currentPage.value = item;
+    }
+    else if (item == currentPage.value){
+      switch(item){
+        case 0:
+          checkScroll.elementAt(0).value = true;
+        case 1:
+          checkScroll.elementAt(1).value = true;
+        case 2:
+          checkScroll.elementAt(2).value = true;
+        case 3:
+          checkScroll.elementAt(3).value = true;
+        case 4:
+          checkScroll.elementAt(4).value = true;
+      }
     }
   }
 
@@ -47,10 +64,10 @@ class ManagerPageController extends GetxController{
 
    bindingPage()  {
     Get.put(HomeController());
-    Get.put(()=> OrderController());
-    Get.put(()=> ShopController());
-    Get.put(() => DiscountController());
-    Get.put(() => OtherSettingController());
+    Get.put( OrderController());
+    Get.put( ShopController());
+    Get.put( DiscountController());
+    Get.put(OtherSettingController());
   }
 
 

@@ -15,25 +15,61 @@ Widget widgetImageAsset(String linkImage) {
   );
 }
 
-Widget widgetImageNetWork(String linkImage) {
-  final height = 20.0.hp;
-  return ClipRRect(
-    borderRadius: BorderRadius.circular(ShapeApp.extraLarge),
-    child:CachedNetworkImage(
-      imageUrl: linkImage,
-      progressIndicatorBuilder: (context, url, downloadProgress) {
-         return Container(
-          height: height,
-        ).redacted(
-            context:context ,
-            redact: true,
-            configuration: RedactedConfiguration(
-              animationDuration:
-              const Duration(milliseconds: 800), //default
-            ));
-      },
-      errorWidget: (context, url, error) => Icon(Icons.error),
-      fit: BoxFit.cover,
-    ),
-  );
+Widget widgetImageNetWork(String linkImage,
+    {double? height, double? width, bool? topBorder}) {
+  final heightContainer = height ?? 20.0.hp;
+  final noBorder = (topBorder == null)
+      ? BorderRadius.circular(ShapeApp.extraLarge)
+      : (topBorder!
+          ? BorderRadius.only(
+              topRight: Radius.circular(ShapeApp.extraLarge),
+              topLeft: Radius.circular(ShapeApp.extraLarge))
+          : BorderRadius.circular(0));
+
+  if (height == null && width == null) {
+    return ClipRRect(
+      borderRadius: noBorder,
+      child: CachedNetworkImage(
+        imageUrl: linkImage,
+        progressIndicatorBuilder: (context, url, downloadProgress) {
+          return Container(
+            height: heightContainer,
+          ).redacted(
+              context: context,
+              redact: true,
+              configuration: RedactedConfiguration(
+                animationDuration: const Duration(milliseconds: 800), //default
+              ));
+        },
+        errorWidget: (context, url, error) => Icon(Icons.error),
+        fit: BoxFit.cover,
+      ),
+    );
+  } else {
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+          topRight: Radius.circular(ShapeApp.extraLarge),
+          topLeft: Radius.circular(ShapeApp.extraLarge)),
+      child: Container(
+        height: height,
+        width: width,
+        child: CachedNetworkImage(
+          imageUrl: linkImage,
+          progressIndicatorBuilder: (context, url, downloadProgress) {
+            return Container(
+              height: heightContainer,
+            ).redacted(
+                context: context,
+                redact: true,
+                configuration: RedactedConfiguration(
+                  animationDuration:
+                      const Duration(milliseconds: 800), //default
+                ));
+          },
+          errorWidget: (context, url, error) => Icon(Icons.error),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
 }

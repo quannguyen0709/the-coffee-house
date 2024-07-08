@@ -11,7 +11,7 @@ class onBardWidget extends StatelessWidget{
   }
 
   Widget managerScreen() {
-    Get.lazyPut(() => ManagerPageController());
+    Get.put( ManagerPageController());
     return ManagerPage();
   }
 

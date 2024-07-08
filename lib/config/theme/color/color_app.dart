@@ -45,7 +45,7 @@ class  ColorApp{
   static const backgourdWhite = Color(0xFFFFFFFF);
   static const backgourdGrey = Color(0xFF808080);
 
-  static const textGrey = Color(0xFF808080);
+  static const textGrey = Color(0xFF5F5F5F);
   static const shadow  = Color(0xFFB8B8B8);
 
 
