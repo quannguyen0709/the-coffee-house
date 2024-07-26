@@ -32,14 +32,13 @@ Widget widgetImageNetWork(String linkImage,
       child: CachedNetworkImage(
         imageUrl: linkImage,
         progressIndicatorBuilder: (context, url, downloadProgress) {
-          return Container(
-            height: heightContainer,
-          ).redacted(
-              context: context,
-              redact: true,
-              configuration: RedactedConfiguration(
-                animationDuration: const Duration(milliseconds: 800), //default
-              ));
+          return Center(
+            child: Container(
+              child: CircularProgressIndicator(
+                value: downloadProgress.downloaded.toDouble(),
+              ),
+            ),
+          );
         },
         errorWidget: (context, url, error) => Icon(Icons.error),
         fit: BoxFit.cover,
@@ -63,7 +62,7 @@ Widget widgetImageNetWork(String linkImage,
                 redact: true,
                 configuration: RedactedConfiguration(
                   animationDuration:
-                      const Duration(milliseconds: 800), //default
+                      const Duration(milliseconds: 50), //default
                 ));
           },
           errorWidget: (context, url, error) => Icon(Icons.error),

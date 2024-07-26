@@ -16,11 +16,6 @@ class ManagerPage extends GetView<ManagerPageController>{
   }
 
 
-  appBar() {
-    return AppBar(
-      title: Text(AppConstants.APP_NAME, style:  TextStyleApp.fontIbmPlexMonoText.bodyLarge,),
-    );
-  }
 
   Widget ManagerScreen() {
     return Scaffold(

@@ -14,9 +14,11 @@ import '../../widgets/image_widget/image_widget.dart';
 
 
 
-class OrderPage extends StatelessWidget{
+class OrderPage extends GetView{
   final homeController = Get.find<HomeController>();
   final orderController = Get.find<OrderController>();
+
+   OrderPage({super.key});
 
 
   @override

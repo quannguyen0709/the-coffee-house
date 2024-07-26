@@ -10,7 +10,6 @@ import 'package:the_coffee_house_leanning/routes/app_routes.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.remove();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays:[ SystemUiOverlay.top]);
     runApp(const MyApp());
 }
 

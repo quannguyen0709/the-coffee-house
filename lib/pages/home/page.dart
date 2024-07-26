@@ -18,15 +18,17 @@ import 'package:the_coffee_house_leanning/widgets/image_widget/image_widget.dart
 
 import '../../repository/model/new_feed/new_feed.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView {
   final controller = Get.find<HomeController>();
   double padding = 5.0.wp;
+
+  HomePage({super.key});
  // test barnch dev
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        backgroundColor: ColorApp.backgourdWhite, body: Obx(() => body()),);
+    var heightStatusBar = MediaQuery.of(context).viewPadding.top;
+    return body(heightStatusBar);
   }
 
 
@@ -35,7 +37,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget body() {
+  Widget body(double heightStastusBar) {
     if (controller.managerControll.value) {
       controller.itemScrollControllerScreen
           .scrollTo(index: 0, duration: Duration(seconds: 1));
@@ -68,7 +70,7 @@ class HomePage extends StatelessWidget {
     return Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 10.0.hp),
+            margin: EdgeInsets.only(top: 8.0.hp + heightStastusBar),
             child: ScrollablePositionedList.builder(
               shrinkWrap: true,
               itemCount: listWidgetInBodySliver.length,
@@ -81,8 +83,8 @@ class HomePage extends StatelessWidget {
           ),
           Positioned(
             child: Obx(() => Container(
-              margin: EdgeInsets.only(top: 2.0.wp),
-              height: 10.0.hp,
+              padding:  EdgeInsets.only(top: heightStastusBar ),
+              height: 8.0.hp + heightStastusBar,
               decoration: controller.checkChangeIcon.value
                   ? null
                   : BoxDecoration(
@@ -97,23 +99,21 @@ class HomePage extends StatelessWidget {
                       ColorApp.backgourdWhite
                     ], // Gradient from https://learnui.design/tools/gradient-generator.html
                   )),
-              child: Center(
-                child: Container(
-                  padding: EdgeInsets.only(
-                      right: 5.0.wp, left: 5.0.wp, top: 3.0.hp),
-                  child: Row(
-                    children: [
-                      widgetLeading(controller.checkChangeIcon.value,
-                          controller.firstIndex.value),
-                      Spacer(),
-                      widgetAction(controller.checkChangeIcon.value,
-                          controller.firstIndex.value)
-                    ],
-                  ),
+              child: Container(
+                padding: EdgeInsets.only(
+                    right: 5.0.wp, left: 5.0.wp),
+                child: Row(
+                  children: [
+                    widgetLeading(controller.checkChangeIcon.value,
+                        controller.firstIndex.value),
+                    Spacer(),
+                    widgetAction(controller.checkChangeIcon.value,
+                        controller.firstIndex.value)
+                  ],
                 ),
-              ),
+              )
             )),
-          )
+          ),
 
         ]
     );
@@ -473,38 +473,36 @@ class HomePage extends StatelessWidget {
     final listProduct =
     controller.listProductMenuId(controller.listMenu.elementAt(index)[2]);
 
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp),
-            child: Text(
-              controller.listMenu.elementAt(index)[1],
-              style: textStyle,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp),
+          child: Text(
+            controller.listMenu.elementAt(index)[1],
+            style: textStyle,
           ),
-          ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: listProduct.length,
-            itemBuilder: (context, indexProduct) {
-              return ItemOrderWidget(
-                  id: controller.listMenu.elementAt(index)[2] + '_' + listProduct.elementAt(indexProduct).id,
-                  height: 30.0.wp,
-                  width: 100.0.wp,
-                  image: widgetImageNetWork(
-                      listProduct.elementAt(indexProduct).thumbnail),
-                  nameItem: listProduct.elementAt(indexProduct).name,
-                  description:
-                  listProduct.elementAt(indexProduct).basePrice.toString() +
-                      " đ",
-                  actionClickButton: controller.actionClickButton,
-                  actionIemOrder: controller.actionClickButton);
-            },)
-        ],
-      ),
+        ),
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: listProduct.length,
+          itemBuilder: (context, indexProduct) {
+            return ItemOrderWidget(
+                id: controller.listMenu.elementAt(index)[2] + '_' + listProduct.elementAt(indexProduct).id,
+                height: 30.0.wp,
+                width: 100.0.wp,
+                image: widgetImageNetWork(
+                    listProduct.elementAt(indexProduct).thumbnail),
+                nameItem: listProduct.elementAt(indexProduct).name,
+                description:
+                listProduct.elementAt(indexProduct).basePrice.toString() +
+                    " đ",
+                actionClickButton: controller.actionClickButton,
+                actionIemOrder: controller.actionClickButton);
+          },)
+      ],
     );
   }
 

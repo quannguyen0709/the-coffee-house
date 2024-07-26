@@ -19,6 +19,7 @@ import '../../service/internet/check_internet.dart';
 enum TypeAction { BLOCK_ITEM_SEARCH, BLOCK_ITEM_BLOG, BLOCK_ITEM_ORDER , BLOCK_ITEM_APP_BAR}
 
 class HomeController extends GetxController {
+
   final chekcInternet = Get.find<CheckInernet>();
 
   AppModel appModel = AppModel().instance;

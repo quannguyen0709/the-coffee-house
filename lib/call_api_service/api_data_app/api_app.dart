@@ -26,7 +26,7 @@ class ApiApp extends DioConfig {
       newFeedsEntity = NewFeedsEntity.fromJson(data.data);
       return newFeedsEntity;
     } on DioException catch (ex) {
-      return "";
+      return "loi roi ";
     }
   }
 
