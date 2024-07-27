@@ -12,8 +12,9 @@ import '../../../repository/model/store/store.dart';
 
 class StoreBottomSheet extends StatelessWidget {
   final Store storeData;
+  final Widget mapWidget;
 
-  StoreBottomSheet({required this.storeData});
+  StoreBottomSheet({required this.storeData, required this.mapWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -228,9 +229,13 @@ class StoreBottomSheet extends StatelessWidget {
 
   Widget mapAddressStore() {
     return Container(
+      margin: EdgeInsets.all(2.0.wp),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(ShapeApp.extraLarge)
+      ),
       width: 100.0.wp,
-      height: 2 / 3 * 100.0.wp,
-      color: ColorApp.buleIcon,
+      height: 0.5 * 100.0.wp,
+      child: mapWidget,
     );
   }
 }

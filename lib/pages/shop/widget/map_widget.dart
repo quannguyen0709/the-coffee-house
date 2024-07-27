@@ -9,7 +9,7 @@ import 'package:the_coffee_house_leanning/pages/shop/logic.dart';
 import '../../../config/theme/color/color_app.dart';
 import '../../../config/theme/shape/shape_app.dart';
 
-class MapWiget extends StatelessWidget {
+class MapWiget {
   final URL_SERVER;
 
   final ShopController shopController;
@@ -32,11 +32,6 @@ class MapWiget extends StatelessWidget {
 
   MapWiget({required this.URL_SERVER, required this.shopController});
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Container();
-  }
 
   Widget MapContainer() {
     return FlutterMap(

@@ -79,8 +79,9 @@ class ShopPage extends GetView {
                     physics: NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
+
                     cacheExtent: 0,
-                    itemCount: 10,
+                    itemCount: shopController.listStore.length,
                     itemBuilder: (context, index) {
                       return StoreWidget(
                           store: shopController.listStore.elementAt(index),
