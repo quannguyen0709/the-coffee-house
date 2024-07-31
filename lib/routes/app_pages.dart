@@ -24,7 +24,7 @@ class AppPages{
 
 
   static List<GetPage> bottomNavigationBar = [
-    GetPage(name: AppRoutes.HOME, page:()=> HomePage(), binding: HomeBinding(),),
+    GetPage(name: AppRoutes.HOME, page:()=> HomePage(), binding: HomeBinding()),
     GetPage(name: AppRoutes.ORDER, page: ()=> OrderPage(), binding:  OrderBinding()),
     GetPage(name: AppRoutes.SHOP, page: ()=> ShopPage(), binding:  ShopBinding()),
     GetPage(name: AppRoutes.DISCOUNT, page: ()=> DiscountPage(), binding:  DiscountBinding()),

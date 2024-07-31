@@ -74,6 +74,7 @@ class ApiApp extends DioConfig {
       var data = await _dio.post("$baseUrlAPi/api/v5/coupon/dashboard",
           data: {"is_limit_order": true},
           options: Options(headers: {
+
             "Authorization":
                 "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MTUxODQxMzEsIm5iZiI6MTcxNTE4NDEzMSwianRpIjoiZDUyNzcyYmItMDU1MS00ODM2LTgzOWEtYmM0NzI4ZTJjOTIxIiwiZXhwIjoxNzIyOTYwMTMxLCJpZGVudGl0eSI6MjA3MDMxMywiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiZXh0IjoxNzI1NTUyMTMxLCJjcm1faWQiOjE5ODQwNDUsImRpZCI6ImQwNmIzNzU1NTk4MTRlMDcwOWMwNTU1NjQxNmE4ZWVkIiwianRpIjoiZjAxYmZjMGEtNDIzZS00OWRmLWI3YzktYWEyOGMyOGI5MjBhIn19.IaOnaGkaPm14YfJq86INTi_m0VJpPWA3RO--ma5j5Po"
           }));

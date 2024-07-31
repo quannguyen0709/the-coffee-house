@@ -81,6 +81,9 @@ class _BottomNavigationWidget extends State<BottomNavigationWidget> {
     Color colorItemText = select ? widget.selectColor.last: widget.color;
 
     return GestureDetector(
+      onDoubleTap: () {
+        onSelect(item);
+      },
       onTap: () {
         onSelect(item);
       },

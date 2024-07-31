@@ -26,10 +26,14 @@ class HomePage extends GetView {
  // test barnch dev
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).viewPadding.top;
     // TODO: implement build
-    var heightStatusBar = MediaQuery.of(context).viewPadding.top;
-    return body(heightStatusBar);
+    return Scaffold(
+      backgroundColor: ColorApp.backgourdWhite,
+      body: Obx(() => body(height)),
+    );
   }
+
 
 
   AppBar appBar() {

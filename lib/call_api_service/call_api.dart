@@ -22,11 +22,12 @@ class CallApi extends GetxService{
   }
 
   Future callApiApp()async{
+    dynamic  discountEntity =  await apiDataApp.getDashBoard();
     final NewFeedsEntity newFeedsEntity = await apiDataApp.getNewFeed();
     final MenuEntity menuEntity = await apiDataApp.getMenu();
     final MediaBoxEntity mediaBoxEntity = await apiDataApp.getMediaBox();
     final StoresEntity storesEntity = await apiDataApp.getStore();
-    //final  DiscountEntity discountEntity =  await apiDataApp.getDashBoard();
+
 
 
     await appModel.addConfigApp(storesEntity);

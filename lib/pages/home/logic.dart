@@ -39,7 +39,8 @@ class HomeController extends GetxController {
   final checkChangeIcon = false.obs;
 
   late ItemScrollController itemScrollControllerScreen;
-  late ItemPositionsListener itemPositionsListenerScreen;
+  late ItemPositionsListener
+  itemPositionsListenerScreen = ItemPositionsListener.create();
 
   var priceChose = 0 ;
 
@@ -50,7 +51,6 @@ class HomeController extends GetxController {
     super.onInit();
 
     itemScrollControllerScreen = ItemScrollController();
-    itemPositionsListenerScreen = ItemPositionsListener.create();
 
 
     loadData();
