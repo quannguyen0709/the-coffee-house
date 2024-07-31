@@ -18,7 +18,7 @@ class AppModel{
    List<Store> store = [];
    List<NewFeed> newFeed = [];
    List<MediaBox> mediaBox = [];
-   UserModel userModel =UserModel();
+   UserModel userModel = UserModel();
    Map<String, Product>listProducts = {};
 
    MenuEntity menuEntity  = MenuEntity();
@@ -27,13 +27,13 @@ class AppModel{
    UserEntity userEntity = UserEntity();
    MediaBoxEntity mediaBoxEntity = MediaBoxEntity();
 
-   AppModel();
+   factory AppModel(){
+      return _instance;
+   }
 
+   static final AppModel _instance = AppModel._singleton();
 
-   static final AppModel _singleton = AppModel();
-
-   AppModel get instance => _singleton;
-
+   AppModel._singleton();
 
 
    Future addConfigApp(dynamic entity)async{

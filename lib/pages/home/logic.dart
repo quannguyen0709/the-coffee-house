@@ -22,7 +22,9 @@ class HomeController extends GetxController {
 
   final chekcInternet = Get.find<CheckInernet>();
 
-  AppModel appModel = AppModel().instance;
+  AppModel appModel = AppModel();
+
+  final checkUserEmpty = AppModel().userModel.checkEmptyUser().obs;
 
   final managerControll = ManagerPageController.checkScroll.elementAt(0);
 

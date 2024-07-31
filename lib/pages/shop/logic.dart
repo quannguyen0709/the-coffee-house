@@ -15,7 +15,9 @@ import '../../repository/model/store/store.dart';
 enum TypeAcotionShopPage { BLOCK_ITEM_STORE }
 
 class ShopController extends GetxController {
-  final AppModel appModel = AppModel().instance;
+  final AppModel appModel = AppModel();
+
+  final checkUserEmpty = AppModel().userModel.checkEmptyUser().obs;
   late List<Store> listStore;
 
   late List<List<Widget>> listImage;

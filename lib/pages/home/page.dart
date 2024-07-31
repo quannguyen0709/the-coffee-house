@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
+import 'package:the_coffee_house_leanning/config/theme/shape/shape_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
@@ -19,7 +20,7 @@ import 'package:the_coffee_house_leanning/widgets/image_widget/image_widget.dart
 import '../../repository/model/new_feed/new_feed.dart';
 
 class HomePage extends GetView {
-  final controller = Get.find<HomeController>();
+  final HomeController controller = Get.find<HomeController>();
   double padding = 5.0.wp;
 
   HomePage({super.key});
@@ -318,35 +319,36 @@ class HomePage extends GetView {
         );
       case false:
         return Container(
-          width: 40.0.wp,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
+          height: 12.0.wp,
+          alignment: Alignment.bottomRight,
+          child:Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 padding: EdgeInsets.all(2.0.wp),
                 decoration: BoxDecoration(
                     color: ColorApp.backgourdWhite,
-                    borderRadius: BorderRadius.circular(5.0.wp),
+                    borderRadius: BorderRadius.circular(ShapeApp.full),
                     border: Border.all(
                         color: ColorApp.textGrey.withAlpha(30),
                         width: 0.6.wp,
                         strokeAlign: BorderSide.strokeAlignInside)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Icon(
                       iconDiscount,
                       color: ColorApp.primaryColorSwatch,
                       size: 5.5.wp,
                     ),
-                    Text(
+                    Container(width: 1.0.wp,),
+                    controller.checkUserEmpty.value ? Container() :  Text(
                       textDiscount.toString(),
                       style: TextStyleApp.fontNotoSansTitle,
                     )
                   ],
                 ),
               ),
+              Container(width: 2.0.wp,),
               Container(
                 child: Stack(
                   children: [
@@ -354,7 +356,7 @@ class HomePage extends GetView {
                       padding: EdgeInsets.all(2.0.wp),
                       decoration: BoxDecoration(
                           color: ColorApp.backgourdWhite,
-                          borderRadius: BorderRadius.circular(5.0.wp),
+                          borderRadius: BorderRadius.circular(ShapeApp.full),
                           border: Border.all(
                               color: ColorApp.textGrey.withAlpha(30),
                               width: 0.6.wp,
@@ -364,7 +366,7 @@ class HomePage extends GetView {
                         size: 5.5.wp,
                       ),
                     ),
-                    Positioned(
+                    controller.checkUserEmpty.value ? Container() : Positioned(
                       bottom: 6.0.wp,
                       left: 6.0.wp,
                       child: Container(
@@ -372,7 +374,8 @@ class HomePage extends GetView {
                           decoration: BoxDecoration(
                               color: ColorApp.redIcon,
                               borderRadius: BorderRadius.circular(5.0.wp)),
-                          child: Text(
+                          child:
+                          Text(
                             textDiscount.toString(),
                             style: TextStyleApp.fontNotoSansDescription
                                 .copyWith(color: Colors.white, fontSize: 8),

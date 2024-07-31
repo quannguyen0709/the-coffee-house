@@ -9,7 +9,7 @@ import 'package:the_coffee_house_leanning/repository/model/app_model.dart';
 
 class CallApi extends GetxService{
   final apiDataApp = ApiApp();
-  final appModel = AppModel().instance;
+  final appModel = AppModel();
 
 
   @override

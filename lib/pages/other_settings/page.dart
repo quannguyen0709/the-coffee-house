@@ -15,6 +15,7 @@ import '../../config/theme/text/text_app.dart';
 import '../../constants/app.dart';
 
 class OtherSettingPage extends GetView<OtherSettingController> {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -114,14 +115,15 @@ class OtherSettingPage extends GetView<OtherSettingController> {
       width: width,
       child: Center(
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               ticketIcon,
               size: heightWidget * 0.7,
               color: ColorApp.primaryColor,
             ),
-            Spacer(),
-            Text(
+             controller.checkUserEmpty.value ? Container() : Spacer(),
+            controller.checkUserEmpty.value ? Container() : Text(
               numberTicket.toString(),
               style: textStyle,
             )
@@ -159,7 +161,7 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               size: 0.7 * heightWidget,
               color: ColorApp.textGrey,
             ),
-            Positioned(
+            controller.checkUserEmpty.value ? Container() :  Positioned(
               bottom: 0.55 * heightWidget,
               left: 0.5 * heightWidget,
               child: Container(

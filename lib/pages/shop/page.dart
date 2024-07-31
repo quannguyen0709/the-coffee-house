@@ -176,14 +176,15 @@ class ShopPage extends GetView {
       width: width,
       child: Center(
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               ticketIcon,
               size: heightWidget * 0.7,
               color: ColorApp.primaryColor,
             ),
-            Spacer(),
-            Text(
+            shopController.checkUserEmpty.value ? Container() : Spacer(),
+            shopController.checkUserEmpty.value ? Container() : Text(
               numberTicket.toString(),
               style: textStyle,
             )
@@ -221,7 +222,7 @@ class ShopPage extends GetView {
               size: 0.7 * heightWidget,
               color: ColorApp.textGrey,
             ),
-            Positioned(
+            shopController.checkUserEmpty.value ? Container() : Positioned(
               bottom: 0.55 * heightWidget,
               left: 0.5 * heightWidget,
               child: Container(
