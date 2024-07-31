@@ -6,7 +6,7 @@ class AddMediaBox{
     List<MediaBox> lisMediaBox = [];
     List<MediaBoxData> listMediaBoxData = mediaBoxEntity.data;
     listMediaBoxData.forEach((element) {
-      lisMediaBox.add(MediaBox( element.iconRespone));
+      element.icon.isNotEmpty ? lisMediaBox.add(MediaBox( icon:   element.icon)) : (element.iconWeb.isNotEmpty ? lisMediaBox.add(MediaBox(icon: element.iconWeb)) : null);
     });
     return lisMediaBox;
   }

@@ -1,6 +1,5 @@
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
-
-import '../../call_api_service/model/membership/membership_entity.dart';
+import 'package:the_coffee_house_leanning/call_api_service/model/membership/membership_entity.dart';
 
 MembershipEntity $MembershipEntityFromJson(Map<String, dynamic> json) {
   final MembershipEntity membershipEntity = MembershipEntity();

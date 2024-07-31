@@ -1,7 +1,5 @@
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
-
-import '../../call_api_service/model/history_order/history_order_entity.dart';
-
+import 'package:the_coffee_house_leanning/call_api_service/model/history_order/history_order_entity.dart';
 
 HistoryOrderEntity $HistoryOrderEntityFromJson(Map<String, dynamic> json) {
   final HistoryOrderEntity historyOrderEntity = HistoryOrderEntity();

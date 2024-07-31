@@ -29,11 +29,11 @@ class CallApi extends GetxService{
     final StoresEntity storesEntity = await apiDataApp.getStore();
 
 
-
+    await appModel.addConfigApp(mediaBoxEntity);
     await appModel.addConfigApp(storesEntity);
     await appModel.addConfigApp(newFeedsEntity);
     await appModel.addConfigApp(menuEntity);
-    await appModel.addConfigApp(mediaBoxEntity);
+
     //await appModel.addConfigApp(discountEntity);
 
 

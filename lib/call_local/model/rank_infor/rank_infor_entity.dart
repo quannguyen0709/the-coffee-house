@@ -7,27 +7,27 @@ export 'package:the_coffee_house_leanning/generated/json/rank_infor_entity.g.dar
 class RankInforEntity {
 	dynamic error;
 	@JSONField(name: "last_update")
-	late int lastUpdate = 0;
+	int? lastUpdate;
 	@JSONField(name: "call_center")
-	late String callCenter = '';
+	String? callCenter;
 	@JSONField(name: "rank_info")
-	late List<RankInforRankInfo> rankInfo = [];
+	List<RankInforRankInfo>? rankInfo;
 	@JSONField(name: "web_links")
-	late RankInforWebLinks webLinks;
+	RankInforWebLinks? webLinks;
 	@JSONField(name: "ping_device_connected")
-	late String pingDeviceConnected = '';
+	String? pingDeviceConnected;
 	@JSONField(name: "update_optional")
-	late bool updateOptional = false;
+	bool? updateOptional;
 	@JSONField(name: "update_required")
-	late bool updateRequired = false;
+	bool? updateRequired;
 	@JSONField(name: "shipping_freq")
-	late int shippingFreq = 0;
+	int? shippingFreq;
 	@JSONField(name: "auth_haravan")
-	late String authHaravan = '';
+	String? authHaravan;
 	@JSONField(name: "staging_host")
-	late String stagingHost = '';
+	String? stagingHost;
 	@JSONField(name: "gms_api_keys")
-	late List<String> gmsApiKeys = [];
+	List<String>? gmsApiKeys;
 
 	RankInforEntity();
 
@@ -43,13 +43,13 @@ class RankInforEntity {
 
 @JsonSerializable()
 class RankInforRankInfo {
-	late int id = 0;
-	late String name = '';
-	late int min = 0;
-	late int max = 0;
-	late List<String> gradients = [];
-	late String icon = '';
-	late List<dynamic> benefits = [];
+	int? id;
+	String? name;
+	int? min;
+	int? max;
+	List<String>? gradients;
+	String? icon;
+	List<dynamic>? benefits;
 
 	RankInforRankInfo();
 
@@ -65,15 +65,15 @@ class RankInforRankInfo {
 
 @JsonSerializable()
 class RankInforWebLinks {
-	late String story = '';
-	late String help = '';
+	String? story;
+	String? help;
 	@JSONField(name: "press_release")
-	late String pressRelease = '';
-	late String reward = '';
-	late String term = '';
-	late String termVNPay = '';
+	String? pressRelease;
+	String? reward;
+	String? term;
+	String? termVNPay;
 	dynamic termPrepaid;
-	late String invoicingInstruct = '';
+	String? invoicingInstruct;
 
 	RankInforWebLinks();
 

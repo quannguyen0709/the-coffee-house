@@ -33,9 +33,9 @@ class MediaBoxData {
 	@JSONField(name: "visible_web")
 	late bool visibleWeb;
 	late int time;
-	late String icon;
+	 String icon = '';
 	@JSONField(name: "icon_web")
-	late String iconWeb;
+	 String iconWeb = '';
 	late bool read;
 	dynamic popup;
 	@JSONField(name: "maria_action_id")

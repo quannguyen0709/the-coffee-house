@@ -1,5 +1,5 @@
 class MediaBox {
   String icon ;
 
-  MediaBox( this.icon);
+  MediaBox({required this.icon});
 }

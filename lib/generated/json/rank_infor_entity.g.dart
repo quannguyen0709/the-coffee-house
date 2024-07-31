@@ -1,5 +1,5 @@
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
-import 'package:the_coffee_house_leanning/call_api_service/model/rank_infor/rank_infor_entity.dart';
+import 'package:the_coffee_house_leanning/call_local/model/rank_infor/rank_infor_entity.dart';
 
 RankInforEntity $RankInforEntityFromJson(Map<String, dynamic> json) {
   final RankInforEntity rankInforEntity = RankInforEntity();
@@ -70,8 +70,8 @@ Map<String, dynamic> $RankInforEntityToJson(RankInforEntity entity) {
   data['error'] = entity.error;
   data['last_update'] = entity.lastUpdate;
   data['call_center'] = entity.callCenter;
-  data['rank_info'] = entity.rankInfo.map((v) => v.toJson()).toList();
-  data['web_links'] = entity.webLinks.toJson();
+  data['rank_info'] = entity.rankInfo?.map((v) => v.toJson()).toList();
+  data['web_links'] = entity.webLinks?.toJson();
   data['ping_device_connected'] = entity.pingDeviceConnected;
   data['update_optional'] = entity.updateOptional;
   data['update_required'] = entity.updateRequired;

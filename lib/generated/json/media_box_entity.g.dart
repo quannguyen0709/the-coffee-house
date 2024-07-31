@@ -1,6 +1,5 @@
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
-
-import '../../call_api_service/model/media_box/media_box_entity.dart';
+import 'package:the_coffee_house_leanning/call_api_service/model/media_box/media_box_entity.dart';
 
 MediaBoxEntity $MediaBoxEntityFromJson(Map<String, dynamic> json) {
   final MediaBoxEntity mediaBoxEntity = MediaBoxEntity();
@@ -71,12 +70,10 @@ MediaBoxData $MediaBoxDataFromJson(Map<String, dynamic> json) {
   final String? icon = jsonConvert.convert<String>(json['icon']);
   if (icon != null) {
     mediaBoxData.icon = icon;
-    mediaBoxData.iconRespone = icon;
   }
   final String? iconWeb = jsonConvert.convert<String>(json['icon_web']);
   if (iconWeb != null) {
     mediaBoxData.iconWeb = iconWeb;
-    mediaBoxData.iconRespone = iconWeb;
   }
   final bool? read = jsonConvert.convert<bool>(json['read']);
   if (read != null) {
@@ -89,6 +86,10 @@ MediaBoxData $MediaBoxDataFromJson(Map<String, dynamic> json) {
   final dynamic mariaActionId = json['maria_action_id'];
   if (mariaActionId != null) {
     mediaBoxData.mariaActionId = mariaActionId;
+  }
+  final String? iconRespone = jsonConvert.convert<String>(json['iconRespone']);
+  if (iconRespone != null) {
+    mediaBoxData.iconRespone = iconRespone;
   }
   return mediaBoxData;
 }
@@ -108,6 +109,7 @@ Map<String, dynamic> $MediaBoxDataToJson(MediaBoxData entity) {
   data['read'] = entity.read;
   data['popup'] = entity.popup;
   data['maria_action_id'] = entity.mariaActionId;
+  data['iconRespone'] = entity.iconRespone;
   return data;
 }
 
@@ -126,6 +128,7 @@ extension MediaBoxDataExtension on MediaBoxData {
     bool? read,
     dynamic popup,
     dynamic mariaActionId,
+    String? iconRespone,
   }) {
     return MediaBoxData()
       ..id = id ?? this.id
@@ -140,6 +143,7 @@ extension MediaBoxDataExtension on MediaBoxData {
       ..iconWeb = iconWeb ?? this.iconWeb
       ..read = read ?? this.read
       ..popup = popup ?? this.popup
-      ..mariaActionId = mariaActionId ?? this.mariaActionId;
+      ..mariaActionId = mariaActionId ?? this.mariaActionId
+      ..iconRespone = iconRespone ?? this.iconRespone;
   }
 }
