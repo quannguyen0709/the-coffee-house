@@ -5,8 +5,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/app.dart';
+import 'package:the_coffee_house_leanning/pages/manager_page/page.dart';
 import 'package:the_coffee_house_leanning/pages/splash/logic.dart';
 import 'package:the_coffee_house_leanning/pages/splash/widget/on_board_widget.dart';
+
+import '../../routes/app_routes.dart';
+import '../manager_page/logic.dart';
 
 class SplashPage extends GetView<SplashController>{
 
@@ -37,8 +41,8 @@ class SplashPage extends GetView<SplashController>{
       if(snapshot.connectionState == ConnectionState.waiting){
         return Scaffold(body: body(),);
       }else if(snapshot.connectionState == ConnectionState.done){
-        return onBardWidget();
-
+        Get.put(ManagerPageController());
+        return ManagerPage();
       }else if(snapshot.hasError){
 
       };

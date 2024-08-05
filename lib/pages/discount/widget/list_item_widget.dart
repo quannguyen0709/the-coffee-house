@@ -13,8 +13,9 @@ class ItemData {
   String nameItem;
   IconData iconsItem;
   Widget? actionClick;
+  Color? color;
 
-  ItemData(this.nameItem, this.iconsItem, {this.actionClick});
+  ItemData(this.color ,this.nameItem, this.iconsItem, {this.actionClick});
 }
 
 class ListItemWidget {
@@ -90,7 +91,7 @@ class ListItemWidget {
     return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: List.generate((list.length / 2 + 1).toInt(), (index) {
+        children: List.generate((list.length / 2 ).toInt(), (index) {
           return Container(
             margin: EdgeInsets.only(top: 3.0.wp),
             child: Row(
@@ -100,7 +101,7 @@ class ListItemWidget {
                 Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        list.elementAt(index).actionClick;
+                        list.elementAt(index * 2).actionClick;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -116,12 +117,12 @@ class ListItemWidget {
                               margin: EdgeInsets.all(2.0.wp),
 
                               child:
-                              Icon(list.elementAt(index).iconsItem, size: 7.0.wp),
+                              Icon(list.elementAt(index * 2).iconsItem, size: 7.0.wp, color: list.elementAt(index * 2).color,),
                             ),
                             Container(
                               margin: EdgeInsets.only(bottom: 2.0.wp, left: 2.0.wp),
                               child: Text(
-                                list.elementAt(index).nameItem,
+                                list.elementAt(index * 2).nameItem,
                                 style: textStyle,
                               ),
                             )
@@ -129,8 +130,8 @@ class ListItemWidget {
                         ),
                       ),
                     )),
-                (index + 1) * 2 <= list.length ? Container(width: 3.0.wp,) : Container(),
-                (index + 1) * 2 <= list.length ? Expanded(
+                (index  * 2 + 1) <= list.length - 1? Container(width: 3.0.wp,) : Container(),
+                (index  * 2 + 1) <= list.length - 1? Expanded(
                   child: GestureDetector(
                     onTap: () {
                       list.elementAt(( index + 1) * 2).actionClick;
@@ -148,13 +149,15 @@ class ListItemWidget {
                           Container(
                             margin: EdgeInsets.all(2.0.wp),
                             child: Icon(
-                                list.elementAt((index + 1) * 2).iconsItem,
-                                size: 7.0.wp),
+                                list.elementAt((index  * 2 + 1)).iconsItem,
+                                size: 7.0.wp,
+                              color:  list.elementAt((index  * 2 + 1)).color,
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.only(bottom: 2.0.wp, left: 2.0.wp),
                             child: Text(
-                              list.elementAt((index + 1) * 2).nameItem,
+                              list.elementAt((index  * 2 + 1)).nameItem,
                               style: textStyle,
                             ),
                           )

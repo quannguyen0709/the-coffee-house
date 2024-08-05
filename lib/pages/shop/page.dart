@@ -30,6 +30,7 @@ class ShopPage extends GetView {
     return bodyPage(context);
   }
 
+
   Widget bodyPage(BuildContext context) {
     return Container(
       color: ColorApp.backgourdWhite,
@@ -76,6 +77,8 @@ class ShopPage extends GetView {
                     ),
                   ),
                   ListView.builder(
+
+                    addAutomaticKeepAlives: true,
                     physics: NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
@@ -183,8 +186,8 @@ class ShopPage extends GetView {
               size: heightWidget * 0.7,
               color: ColorApp.primaryColor,
             ),
-            shopController.checkUserEmpty.value ? Container() : Spacer(),
-            shopController.checkUserEmpty.value ? Container() : Text(
+            shopController.checkUserEmpty.value.checkEmptyUser ? Container() : Spacer(),
+            shopController.checkUserEmpty.value.checkEmptyUser ? Container() : Text(
               numberTicket.toString(),
               style: textStyle,
             )
@@ -222,7 +225,7 @@ class ShopPage extends GetView {
               size: 0.7 * heightWidget,
               color: ColorApp.textGrey,
             ),
-            shopController.checkUserEmpty.value ? Container() : Positioned(
+            shopController.checkUserEmpty.value.checkEmptyUser ? Container() : Positioned(
               bottom: 0.55 * heightWidget,
               left: 0.5 * heightWidget,
               child: Container(

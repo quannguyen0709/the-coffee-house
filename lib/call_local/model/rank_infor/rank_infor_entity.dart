@@ -43,13 +43,13 @@ class RankInforEntity {
 
 @JsonSerializable()
 class RankInforRankInfo {
-	int? id;
-	String? name;
-	int? min;
-	int? max;
+	int id = 0;
+	String name = '';
+	int min = 0;
+	int max = 0 ;
 	List<String>? gradients;
-	String? icon;
-	List<dynamic>? benefits;
+	String icon = '';
+	List<dynamic> benefits = [];
 
 	RankInforRankInfo();
 

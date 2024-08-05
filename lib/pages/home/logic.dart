@@ -24,7 +24,7 @@ class HomeController extends GetxController {
 
   AppModel appModel = AppModel();
 
-  final checkUserEmpty = AppModel().userModel.checkEmptyUser().obs;
+  final checkUserEmpty = AppModel().userModel.obs;
 
   final managerControll = ManagerPageController.checkScroll.elementAt(0);
 
@@ -88,7 +88,7 @@ class HomeController extends GetxController {
     listNewFeed = appModel.newFeed;
 
     int length = (appModel.mediaBox.length / 2).round();
-    for (int i = length; i < appModel.mediaBox.length; i++) {
+    for (int i = length + 1 ; i < appModel.mediaBox.length; i++) {
       itemListCarouselSilder.add(appModel.mediaBox.elementAt(i).icon);
     }
 

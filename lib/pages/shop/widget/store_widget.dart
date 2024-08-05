@@ -52,6 +52,8 @@ class StoreWidget extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
+              alignment: Alignment.centerLeft,
+              width: 35.0.wp,
               margin: EdgeInsets.all(3.0.wp),
               child: widgetImageNetWork(store.images.first),
             ),

@@ -1,0 +1,208 @@
+{
+  "error": {
+    "error_code": null,
+    "message": "Unknown!",
+    "title": "",
+    "extra": null
+  },
+  "results": [
+    {
+      "title": "Sắp hết hạn",
+      "type": null,
+      "count": null,
+      "campaigns": [
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "TRAXANH",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722439080,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1704649135_coupon-mua1tang1.jpg"
+            }
+          ],
+          "id": "658d2905c38727001b67f4f4",
+          "title": "Tuần Lễ Trà Xanh Tây Bắc - Mua 1 Tặng 1",
+          "description": "- Áp dụng thứ 2 đến thứ 4, 29/07/2024 - 31/07/2024\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, Bà Đen, SIGNATURE by The Coffee House).\n- Áp dụng các sản phẩm Trà Xanh size Vừa:\nTrà Xanh Latte \nTrà Xanh Latte Nóng\nFrosty Trà Xanh\nTrà Xanh Đường Đen\nTrà Xanh Espresso Marble\n- Sản phẩm tặng là sản phẩm có giá trị bằng hoặc thấp hơn.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng Voucher.\n- Chương trình có thể kết thúc sớm hơn dự kiến nếu hết số lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722439080,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 23 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1704649135_coupon-mua1tang1.jpg",
+          "discount_rate": null,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "TINHTAOX2",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722440820,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1719894333_coupon-69k.jpg"
+            }
+          ],
+          "id": "667ab65355fa7f0019b51fae",
+          "title": "Combo 2 Ly Caffeine 69K + Freeship",
+          "description": "- Áp dụng các sản phẩm size Vừa:\nCà Phê Sữa Đá\nBạc Sỉu\nThe Coffee House Sữa Đá\nĐường Đen Sữa Đá\nCold Brew Phúc Bồn Tử\nCold Brew Kim Quất\nTrà Xanh Latte\nBơ Arabica\n\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, Bà Đen, SIGNATURE by The Coffee House).\n- Không áp dụng cho topping.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng Voucher.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722440820,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 24 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1719894333_coupon-69k.jpg",
+          "discount_rate": null,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "ROMRA",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722440880,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1714375847_deli-50.jpg"
+            }
+          ],
+          "id": "662b2a02457678001a8d5c59",
+          "title": "Giảm 50% + Freeship Đơn Từ 10 Ly Tối Đa 500K",
+          "description": "- Áp dụng cho toàn bộ sản phẩm nước khi đặt hàng từ 10 ly trở lên.\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, Bà Đen, SIGNATURE by The Coffee House).\n- Áp dụng luỹ tiến.\n- Không áp dụng cho topping.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng Voucher.\n- Chương trình có thể kế thúc sớm hơn dự kiến nếu hết lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722440880,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 24 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1714375847_deli-50.jpg",
+          "discount_rate": 50,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "CUNGVUI30",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722440940,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1709222265_deli-copy-7.jpg"
+            }
+          ],
+          "id": "65dd8386b941b7001a230a65",
+          "title": "Giảm 30% + Freeship Đơn Từ 3 Ly",
+          "description": "- Áp dụng cho toàn bộ sản phẩm nước khi đặt hàng từ 3 ly trở lên.\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, Bà Đen, SIGNATURE by The Coffee House).\n- Áp dụng luỹ tiến.\n- Không áp dụng cho topping.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng Voucher.\n- Chương trình có thể kế thúc sớm hơn dự kiến nếu hết lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722440940,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 24 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1709222265_deli-copy-7.jpg",
+          "discount_rate": 30,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "TUNGBUNG20",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722441060,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1698765382_coupon-20k.jpg"
+            }
+          ],
+          "id": "65409fcb46f8d8001296f0b9",
+          "title": "Giảm 20K Đơn 50K",
+          "description": "Giảm 20K cho đơn từ 50K\n\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, cửa hàng Bà Đen - Tây Ninh, SIGNATURE by The Coffee House). \n- Áp dụng cho sản phẩm nước, bánh. Không áp dụng cho topping, Cơm Nhà.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng voucher.\n- Chương trình có thể kết thúc sớm hơn dự kiến nếu hết số lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722441060,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 24 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1698765382_coupon-20k.jpg",
+          "discount_rate": null,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "FREESHIP2024",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1722441120,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1698765259_cp.jpg"
+            }
+          ],
+          "id": "63b3a1aa78875000193af6d7",
+          "title": "Miễn Phí Giao Hàng",
+          "description": "Miễn phí vận chuyển\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, cửa hàng Bà Đen - Tây Ninh, SIGNATURE by The Coffee House).\n- Áp dụng cho đơn hàng từ 18.000đ, có 1 sản phẩm nước.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng voucher.\n- Chương trình có thể kết thúc sớm hơn dự kiến nếu hết số lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1722441120,
+          "time_left": "<p style=\"color:#FF0000\">Hết hạn trong 24 tiếng</p>",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1698765259_cp.jpg",
+          "discount_rate": null,
+          "allow_order": true,
+          "show_all_coupons": false
+        }
+      ]
+    },
+    {
+      "title": "Sẵn sàng sử dụng",
+      "type": null,
+      "count": null,
+      "campaigns": [
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "NHANHGON",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1725115980,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1698765322_cp-pick-up.jpg"
+            }
+          ],
+          "id": "64ead419bec3290019989da3",
+          "title": "Giảm 10% Đơn từ 2 Món",
+          "description": "Giảm 10% cho đơn hàng từ 2 món\n\n- Áp dụng dịch vụ Mua mang đi (Pick up)  khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, cửa hàng Bà Đen -Tây Ninh, SIGNATURE by The Coffee House. Quận 7).\n- Ưu đãi chỉ áp dụng cho sản phẩm nước, bánh.\n- Không áp dụng cho topping và sản phẩm Trái Cây Xay kèm Phao.\n- Không áp dụng song song các chương trình khác\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng voucher.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1725115980,
+          "time_left": "Hết hạn 31/08/2024",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1698765322_cp-pick-up.jpg",
+          "discount_rate": 10,
+          "allow_order": true,
+          "show_all_coupons": false
+        },
+        {
+          "brand": "The Coffee House",
+          "coupon_count": null,
+          "coupons": [
+            {
+              "barcode": "TUNGBUNG30",
+              "quantity": null,
+              "effective_from": null,
+              "effective_to": null,
+              "end_time": 1725119400,
+              "image": "https://minio.thecoffeehouse.com/image/admin/1698765397_coupon-30k.jpg"
+            }
+          ],
+          "id": "65408960ce5db40012feb74f",
+          "title": "Giảm 30K Đơn 99K",
+          "description": "Giảm 30K cho đơn từ 99K\n\n- Áp dụng dịch vụ Giao hàng (Delivery) khi đặt hàng qua App/Web The Coffee House trên toàn quốc (Trừ các cửa hàng Phú Quốc, cửa hàng Bà Đen - Tây Ninh, SIGNATURE by The Coffee House) \n- Áp dụng cho sản phẩm nước, bánh. Không áp dụng cho topping, cơm nhà và sản phẩm Trái Cây Xay kèm Phao.\n- Không áp dụng song song các chương trình khác.\n- Trường hợp sản phẩm nằm trong danh sách nhiều chương trình khác nhau (Khuyến mãi gạch giá & Khuyến mãi từ voucher), hệ thống sẽ ưu tiên áp dụng voucher.\n- Chương trình có thể kết thúc sớm hơn dự kiến nếu hết số lượng ưu đãi.\n- Xem thêm về điều khoản sử dụng dịch vụ tại: https://thecoffeehouse.com/pages/dieu-khoan-su-dung",
+          "end_time": 1725119400,
+          "time_left": "Hết hạn 31/08/2024",
+          "image": "https://minio.thecoffeehouse.com/image/admin/1698765397_coupon-30k.jpg",
+          "discount_rate": null,
+          "allow_order": true,
+          "show_all_coupons": false
+        }
+      ]
+    }
+  ]
+}

@@ -36,6 +36,8 @@ class  ColorApp{
   static const Color buleIcon = Color(0xFF0571e5);
   static const Color redIcon = Color(0xFFe50905);
 
+  static const Color orangeBackground = Color(0xFF9C5507);
+
   static const Color greenButton = Color(0xFF00af21);
   static const Color greenBackgourdButton = Color(0xFFc1f49c);
 

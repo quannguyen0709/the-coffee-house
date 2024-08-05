@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,7 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/logic.dart';
+import 'package:the_coffee_house_leanning/pages/other_settings/widget/contact_page.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/widget/list_item_widget.dart';
+import 'package:the_coffee_house_leanning/pages/other_settings/widget/web_view_post.dart';
+import 'package:the_coffee_house_leanning/routes/app_routes.dart';
 
 import '../../config/theme/color/color_app.dart';
 import '../../config/theme/shape/shape_app.dart';
@@ -15,7 +16,6 @@ import '../../config/theme/text/text_app.dart';
 import '../../constants/app.dart';
 
 class OtherSettingPage extends GetView<OtherSettingController> {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -122,11 +122,15 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               size: heightWidget * 0.7,
               color: ColorApp.primaryColor,
             ),
-             controller.checkUserEmpty.value ? Container() : Spacer(),
-            controller.checkUserEmpty.value ? Container() : Text(
-              numberTicket.toString(),
-              style: textStyle,
-            )
+            controller.checkUserEmpty.value.checkEmptyUser
+                ? Container()
+                : Spacer(),
+            controller.checkUserEmpty.value.checkEmptyUser
+                ? Container()
+                : Text(
+                    numberTicket.toString(),
+                    style: textStyle,
+                  )
           ],
         ),
       ),
@@ -161,22 +165,24 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               size: 0.7 * heightWidget,
               color: ColorApp.textGrey,
             ),
-            controller.checkUserEmpty.value ? Container() :  Positioned(
-              bottom: 0.55 * heightWidget,
-              left: 0.5 * heightWidget,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: ColorApp.redIcon, shape: BoxShape.circle),
-                height: 0.4 * heightWidget,
-                width: 0.4 * heightWidget,
-                child: Center(
-                  child: Text(
-                    numberNotification.toString(),
-                    style: textStyle,
-                  ),
-                ),
-              ),
-            )
+            controller.checkUserEmpty.value.checkEmptyUser
+                ? Container()
+                : Positioned(
+                    bottom: 0.55 * heightWidget,
+                    left: 0.5 * heightWidget,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: ColorApp.redIcon, shape: BoxShape.circle),
+                      height: 0.4 * heightWidget,
+                      width: 0.4 * heightWidget,
+                      child: Center(
+                        child: Text(
+                          numberNotification.toString(),
+                          style: textStyle,
+                        ),
+                      ),
+                    ),
+                  )
           ],
         ),
       ),
@@ -191,14 +197,21 @@ class OtherSettingPage extends GetView<OtherSettingController> {
           color: ColorApp.backgourdGrey.withOpacity(0.1),
         ),
         Container(
-          margin: EdgeInsets.only(right: 5.0.wp, left:  5.0.wp),
+          margin: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             physics: AlwaysScrollableScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[extensionWidget() ,supportWidget(), accountWidget(), Container(height: 7.0.wp,)],
+              children: <Widget>[
+                extensionWidget(),
+                supportWidget(),
+                accountWidget(),
+                Container(
+                  height: 7.0.wp,
+                )
+              ],
             ),
           ),
         )
@@ -207,18 +220,32 @@ class OtherSettingPage extends GetView<OtherSettingController> {
   }
 
   Widget accountWidget() {
-    ActionClick actionClickPerson = ({objectClass, url, widget}) {
-      print(url);
-      return Container();
-    };
-
     final titleWidget = 'Tài khoản';
     final textStyleTitle = TextStyleApp.fontNotoSansLarge;
     List<ItemData> listItemData = [
-      ItemData('Thông tin cá nhân', Icons.person_outline_sharp, actionClick: actionClickPerson(url: 'PERSON')),
-      ItemData('Địa chỉ đã lưu', Icons.bookmark_border_outlined),
+      ItemData('Thông tin cá nhân', Icons.person_outline_sharp,
+          url: '',
+          actionClick: (String url, String name) {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
+            : null;
+      }),
+      ItemData('Địa chỉ đã lưu', Icons.bookmark_border_outlined,url: '',
+          actionClick: (String url, String name) {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
+            : null;
+      }),
       ItemData('Cài đặt', Icons.settings_outlined),
-      ItemData('Đăng xuất', Icons.output)
+      ItemData(
+          controller.checkUserEmpty.value.checkEmptyUser
+              ? 'Đăng nhập'
+              : 'Đăng xuất',url: '',
+          Icons.output, actionClick: (String url, String name) {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
+            : null;
+      })
     ];
     Widget listItemWidget = ListItemWidget().listItemOption(listItemData);
     return Column(
@@ -243,9 +270,19 @@ class OtherSettingPage extends GetView<OtherSettingController> {
     final titleWidget = 'Hỗ trợ';
     final textStyleTitle = TextStyleApp.fontNotoSansLarge;
     List<ItemData> listItemData = [
-      ItemData('Đánh giá đơn hàng', Icons.star_border),
-      ItemData('Liên hệ góp ý', Icons.messenger_outline_sharp),
-      ItemData('Hướng dẫn xuất hóa đơn GTGT', Icons.document_scanner_outlined)
+      ItemData('Đánh giá đơn hàng', Icons.star_border,url: '',
+          actionClick: (String url, String name) {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
+            : null;
+      }),
+      ItemData('Liên hệ góp ý', Icons.messenger_outline_sharp, url: '',
+          actionClick: (String url, String name) {
+        Get.to(ContactPage());
+      }),
+      ItemData('Hướng dẫn xuất hóa đơn GTGT', Icons.document_scanner_outlined,
+          actionClick: controller.actionClick,
+          url: controller.appModel.webLink.invoicingInstruct)
     ];
 
     Widget listItemWidget = ListItemWidget().listItemOption(listItemData);
@@ -270,7 +307,20 @@ class OtherSettingPage extends GetView<OtherSettingController> {
   Widget extensionWidget() {
     final titleWidget = 'Tiện ích';
     final textStyleTitle = TextStyleApp.fontNotoSansLarge;
-    List<ItemData> list = [ItemData('Lịch sử đơn hàng', Icons.history), ItemData('Điều khoản', Icons.document_scanner_outlined), ItemData('Điều khỏan vay VNPay', Icons.document_scanner_outlined)];
+    List<ItemData> list = [
+      ItemData('Lịch sử đơn hàng', Icons.history,url: '',
+          actionClick: (String url, String name) {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
+            : null;
+      }),
+      ItemData('Điều khoản', Icons.document_scanner_outlined,
+          actionClick: controller.actionClick,
+          url: controller.appModel.webLink.term),
+      ItemData('Điều khỏan vay VNPay', Icons.document_scanner_outlined,
+          actionClick: controller.actionClick,
+          url: controller.appModel.webLink.termVNPay)
+    ];
     Widget listItemWidget = ListItemWidget().listItemOptionGridView(list);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

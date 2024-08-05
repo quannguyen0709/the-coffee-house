@@ -5,4 +5,8 @@ class AppConstants{
   static const APP_NAME = "The Coffee House";
   static const BASE_URL_API = "https://api.thecoffeehouse.com";
   static heightStatusBar(BuildContext context) => MediaQuery.viewPaddingOf(context).top;
+  static const CALL_NUMBER = '18006936';
+  static const ADDRESS_FACEBOOK =  'https://www.facebook.com/The.Coffee.House.2014';
+  static const ADDRESS_WEBSITE = 'https://thecoffeehouse.com';
+  static const ADDRESS_EMAIL = 'hi@thecoffeehouse.vn';
 }

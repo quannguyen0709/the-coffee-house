@@ -72,7 +72,10 @@ dependencies:
 
   #taoj webview show link url
   webview_flutter: ^4.8.0
-
+  #tao badge
+  badges: ^3.1.2
+  #tao QR code
+  qr_flutter: ^4.1.0
 
 
 
@@ -127,6 +130,15 @@ flutter:
     - assets/icon_navigation_bar/
     - assets/carousel_slider_image/
     - assets/dedfault_config_resouce/
+
+    - assets/rank_icon_tch/diamon/
+    - assets/rank_icon_tch/bronze/
+    - assets/rank_icon_tch/gold/
+    - assets/rank_icon_tch/new/
+    - assets/rank_icon_tch/silver/
+
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
+import 'package:the_coffee_house_leanning/call_local/local_data_app/asset_call_json.dart';
 import 'package:the_coffee_house_leanning/constants/app.dart';
+import 'package:the_coffee_house_leanning/repository/model/app_model.dart';
 import 'package:the_coffee_house_leanning/service/config_api/call_api_config.dart';
 
 import '../model/discount/discount_entity.dart';
@@ -67,7 +70,7 @@ class ApiApp extends DioConfig {
     }
   }
 
-  Future<dynamic> getDashBoard() async {
+  Future<DiscountEntity> getDashBoard() async {
     final DiscountEntity discountEntity;
     var _dio = await dio;
     try {
@@ -81,7 +84,7 @@ class ApiApp extends DioConfig {
       discountEntity = DiscountEntity.fromJson(data.data);
       return discountEntity;
     } on DioException catch (ex) {
-      return "";
+      return  DiscountEntity.fromJson(jsonDecode(await JsonFromAsset().loadAsset('discount_respone.json')));
     }
   }
 }

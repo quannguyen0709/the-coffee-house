@@ -5,6 +5,7 @@ import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/pages/home/page.dart';
 import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 
+import '../../repository/model/new_feed/new_feed.dart';
 import '../../widgets/component_widget/component_list_item/list_item_widget.dart';
 import '../../widgets/component_widget/component_list_item/searchBar.dart';
 import '../home/logic.dart';
@@ -36,7 +37,7 @@ class OrderController extends GetxController{
         toolBar: false,
         indexLive: homeController.listIndexLive,
         list: homeController.listMenu,
-        actionItem: homeController.actionClickButton,
+        actionItem: actionClickButton,
         favoriteButton: buttonFavorite(homeController.actionClickButton),
         searchBar: SearchBarWidget(
           actionClick: homeController.actionClickButton,
@@ -50,6 +51,33 @@ class OrderController extends GetxController{
     itemPositionsListener.itemPositions.addListener(() {
       itemPositionChecker();
     });
+  }
+
+  void actionItemSearch(String idAction) {
+    if (idAction == 'search') {
+      print('search in action item search');
+    } else if (idAction == 'favorite') {
+      print('favorite in action item search');
+    } else {
+      final action = idAction.split('_')[0];
+      itemScrollController.scrollTo(index: int.parse(action), duration: Duration(milliseconds: 500));
+    }
+  }
+
+  void actionClickButton(String idAction, TypeAction action,
+      {BuildContext? context, Post? post}) {
+    switch (action) {
+      case TypeAction.BLOCK_ITEM_SEARCH:
+        actionItemSearch(idAction);
+
+      case TypeAction.BLOCK_ITEM_BLOG:
+       // actionItemBlog(idAction: idAction, post:  post);
+
+      case TypeAction.BLOCK_ITEM_ORDER:
+        //actionItemOrder(idAction);
+      case TypeAction.BLOCK_ITEM_APP_BAR:
+      //actionItemAppBar(idAction, context!);
+    }
   }
 
   void itemPositionChecker() {

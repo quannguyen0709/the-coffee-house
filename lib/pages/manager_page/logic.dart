@@ -65,8 +65,8 @@ class ManagerPageController extends GetxController{
    bindingPage()  {
     Get.put(HomeController());
     Get.put( OrderController());
-    Get.put( ShopController());
-    Get.put( DiscountController());
+    Get.lazyPut(() => ShopController());
+    Get.lazyPut(() => DiscountController());
     Get.put(OtherSettingController());
   }
 

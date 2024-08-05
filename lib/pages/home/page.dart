@@ -77,6 +77,8 @@ class HomePage extends GetView {
           Container(
             margin: EdgeInsets.only(top: 8.0.hp + heightStastusBar),
             child: ScrollablePositionedList.builder(
+              addAutomaticKeepAlives: true,
+              minCacheExtent: 0,
               shrinkWrap: true,
               itemCount: listWidgetInBodySliver.length,
               itemBuilder: (context, index) {
@@ -144,6 +146,7 @@ class HomePage extends GetView {
           ),
         ),
         GridView.builder(
+          
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: gridDelegate,
@@ -305,12 +308,17 @@ class HomePage extends GetView {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-                padding: EdgeInsets.only(right: 5.0.wp),
-                child: Icon(
-                  iconSearch,
-                  size: 6.0.wp,
-                )),
+            GestureDetector (
+              onTap: (){
+                controller.appModel.userModel.checkEmptyUser = !controller.appModel.userModel.checkEmptyUser;
+              },
+              child: Container(
+                  padding: EdgeInsets.only(right: 5.0.wp),
+                  child: Icon(
+                    iconSearch,
+                    size: 6.0.wp,
+                  )),
+            ),
             Icon(
               iconFavorite,
               size: 6.0.wp,
@@ -341,7 +349,7 @@ class HomePage extends GetView {
                       size: 5.5.wp,
                     ),
                     Container(width: 1.0.wp,),
-                    controller.checkUserEmpty.value ? Container() :  Text(
+                    controller.checkUserEmpty.value.checkEmptyUser ? Container() :  Text(
                       textDiscount.toString(),
                       style: TextStyleApp.fontNotoSansTitle,
                     )
@@ -366,7 +374,7 @@ class HomePage extends GetView {
                         size: 5.5.wp,
                       ),
                     ),
-                    controller.checkUserEmpty.value ? Container() : Positioned(
+                    controller.checkUserEmpty.value.checkEmptyUser ? Container() : Positioned(
                       bottom: 6.0.wp,
                       left: 6.0.wp,
                       child: Container(

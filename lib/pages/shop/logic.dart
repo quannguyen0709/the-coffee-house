@@ -17,7 +17,7 @@ enum TypeAcotionShopPage { BLOCK_ITEM_STORE }
 class ShopController extends GetxController {
   final AppModel appModel = AppModel();
 
-  final checkUserEmpty = AppModel().userModel.checkEmptyUser().obs;
+  final checkUserEmpty = AppModel().userModel.obs;
   late List<Store> listStore;
 
   late List<List<Widget>> listImage;

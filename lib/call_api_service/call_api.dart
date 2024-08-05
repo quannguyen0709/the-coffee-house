@@ -9,8 +9,8 @@ import 'package:the_coffee_house_leanning/repository/model/app_model.dart';
 
 class CallApi extends GetxService{
   final apiDataApp = ApiApp();
-  final appModel = AppModel();
 
+  final appModel = AppModel();
 
   @override
   Future<CallApi> onInit() async {
@@ -22,19 +22,19 @@ class CallApi extends GetxService{
   }
 
   Future callApiApp()async{
-    dynamic  discountEntity =  await apiDataApp.getDashBoard();
+    final DiscountEntity  discountEntity =  await apiDataApp.getDashBoard();
     final NewFeedsEntity newFeedsEntity = await apiDataApp.getNewFeed();
     final MenuEntity menuEntity = await apiDataApp.getMenu();
     final MediaBoxEntity mediaBoxEntity = await apiDataApp.getMediaBox();
     final StoresEntity storesEntity = await apiDataApp.getStore();
 
 
+    await appModel.addConfigApp(discountEntity);
     await appModel.addConfigApp(mediaBoxEntity);
     await appModel.addConfigApp(storesEntity);
     await appModel.addConfigApp(newFeedsEntity);
     await appModel.addConfigApp(menuEntity);
 
-    //await appModel.addConfigApp(discountEntity);
 
 
 

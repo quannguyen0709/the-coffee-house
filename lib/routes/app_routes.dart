@@ -5,7 +5,7 @@ class AppRoutes{
   //Main routes
   static const String SPLASH = "/splash";
   static const String MANAGER_PAGE = "/manager_page";
-
+  static const String LOGIN_PAGE = '/login_page';
 
 
 

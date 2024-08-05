@@ -7,14 +7,15 @@ import 'package:the_coffee_house_leanning/config/theme/text/text_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
 
 
-typedef ActionClick = Widget Function({String? url, Widget? widget, dynamic? objectClass});
 
 class ItemData {
+  String? url;
   String nameItem;
+  String? description;
   IconData iconsItem;
-  Widget? actionClick;
+  final void Function (String url, String title)? actionClick;
 
-  ItemData(this.nameItem, this.iconsItem, {this.actionClick});
+  ItemData(this.nameItem, this.iconsItem, {this.actionClick, this.url, this.description});
 }
 
 class ListItemWidget {
@@ -38,7 +39,7 @@ class ListItemWidget {
         children: List.generate(list.length, (index) {
           return GestureDetector(
             onTap: () {
-              list.elementAt(index).actionClick;
+              list.elementAt(index).actionClick != null ? list.elementAt(index).actionClick!( list.elementAt(index).url!,list.elementAt(index).nameItem,) : null;
             },
             child: Container(
                 margin: EdgeInsets.all(1.5.wp),
@@ -100,7 +101,7 @@ class ListItemWidget {
                 Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        list.elementAt(index).actionClick;
+                         list.elementAt(index).actionClick != null ? list.elementAt(index).actionClick!( list.elementAt(index).url!,list.elementAt(index).nameItem,) : null;
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -133,7 +134,7 @@ class ListItemWidget {
                 (index + 1) * 2 <= list.length ? Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      list.elementAt(( index + 1) * 2).actionClick;
+                      list.elementAt((index + 1) * 2 ).actionClick != null ? list.elementAt((index + 1) * 2 ).actionClick!( list.elementAt((index + 1) * 2 ).url!,list.elementAt((index + 1) * 2 ).nameItem,) : null;
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -167,5 +168,87 @@ class ListItemWidget {
             ),
           );
         }));
+  }
+
+
+
+  Widget listItemOptionContact(List<ItemData> list) {
+    final textStyle = TextStyleApp.fontNotoSansTitle;
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorApp.backgourdWhite,
+        boxShadow: [
+          BoxShadow(
+              blurStyle: BlurStyle.outer,
+              spreadRadius: 0.3.wp,
+              color: ColorApp.backgourdGrey.withOpacity(0.2),
+              offset: Offset(0.0, 1.0))
+        ],
+        borderRadius: BorderRadius.circular(ShapeApp.extraLarge),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: List.generate(list.length, (index) {
+          return GestureDetector(
+            onTap: () {
+              list.elementAt(index).actionClick != null ? list.elementAt(index).actionClick!( list.elementAt(index).url!,list.elementAt(index).nameItem,) : null;
+            },
+            child: Container(
+                margin: EdgeInsets.all(1.5.wp),
+                child: Container(
+                  margin: EdgeInsets.all(1.0.wp),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              style: BorderStyle.solid,
+                              color: ColorApp.backgourdGrey.withOpacity(0.2),
+                              width: 0.1.wp))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.all(1.5.wp),
+                          child: Icon(
+                            list.elementAt(index).iconsItem,
+                            size: 5.0.wp,
+                          )),
+                      Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(top: 1.0.wp, bottom: 1.0.wp),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  list.elementAt(index).nameItem,
+                                  style: textStyle,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  list.elementAt(index).description!,
+                                  style: textStyle,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              ],
+                            ),
+                          )),
+                      Container(
+                          margin: EdgeInsets.all(1.5.wp),
+                          child: Icon(
+                            Icons.chevron_right_outlined,
+                            size: 5.0.wp,
+                          ))
+                    ],
+                  ),
+                )),
+          );
+        }),
+      ),
+    );
   }
 }
