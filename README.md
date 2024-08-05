@@ -1,16 +1,13 @@
 # the_coffee_house_leanning
 
-A new Flutter project.
+Ứng dụng mang mục đích học tập nâng cao trình độ. 
+Không mang mục đích thương mại.
+Mọi liên hệ xin vui lòng liên lạc qua: quannguyen070309@gmail.com 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Dự án sử dụng framework Flutter ( ngôn ngữ Dart).
+Dự án có các chức năng và giao diện giống Ứng dụng The Coffee House đang có trên thị trường 
+Link demo:
+Dự án xây dựng theo kiến trúc MVVM. Sử dụng thư viện Getx quản lý trạng thái vòng đời của Page và các Widget
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
