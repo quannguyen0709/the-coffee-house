@@ -9,4 +9,6 @@ class AppConstants{
   static const ADDRESS_FACEBOOK =  'https://www.facebook.com/The.Coffee.House.2014';
   static const ADDRESS_WEBSITE = 'https://thecoffeehouse.com';
   static const ADDRESS_EMAIL = 'hi@thecoffeehouse.vn';
+  static const NAME_BOX_HIVE = 'the_coffee_house_box';
+  static var FRIST_LAUNCH_APP  = true;
 }

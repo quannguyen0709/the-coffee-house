@@ -15,8 +15,9 @@ class SplashController extends GetxController {
 
   @override
   Future<void> onInit() async {
+    final test =await jsonFromAsset.loadAsset('rank_infor.json');
     appModel.addConfigApp(RankInforEntity.fromJson(
-        jsonDecode(await jsonFromAsset.loadAsset('rank_infor.json'))));
+        jsonDecode(test)));
     //print(appModel.rankInfor.first.name);
     //print('');
     //await Future.delayed(Duration(seconds: 10));
@@ -25,7 +26,8 @@ class SplashController extends GetxController {
   Future<void> initService(BuildContext context) async {
     await Get.putAsync(() => CheckInernet(context: context).onInit(),
         permanent: true);
-    await Get.putAsync(() => CallApi().onInit(), permanent: true);
+     Get.put(CallApi(), permanent: true);
+     await CallApi().callApiApp();
 
     //appModel.rankInforEntity = RankInforEntity.fromJson();
   }

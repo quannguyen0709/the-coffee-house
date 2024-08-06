@@ -36,7 +36,7 @@ class HomeController extends GetxController {
 
 
   List<ItemPosition> visibleIndexes = [];
-  final int listIndexLive = 3;
+  int listIndexLive = 3;
   final  firstIndex = 0.obs;
   final checkChangeIcon = false.obs;
 

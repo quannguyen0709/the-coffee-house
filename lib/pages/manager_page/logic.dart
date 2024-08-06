@@ -12,6 +12,8 @@ import 'package:the_coffee_house_leanning/pages/shop/logic.dart';
 import 'package:the_coffee_house_leanning/routes/app_pages.dart';
 import 'package:the_coffee_house_leanning/service/internet/check_internet.dart';
 
+import '../../constants/app.dart';
+
 class ManagerPageController extends GetxController{
   final string = 5;
   final chekcInternet = Get.find<CheckInernet>();
@@ -28,6 +30,7 @@ class ManagerPageController extends GetxController{
 
   @override
    onInit(){
+     print('AppConstants.FRIST_LAUNCH_APP: ' + AppConstants.FRIST_LAUNCH_APP.toString());
     bindingPage();
     super.onInit();
 

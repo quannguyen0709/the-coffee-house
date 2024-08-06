@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:the_coffee_house_leanning/config/theme/color/color_app.dart';
 import 'package:the_coffee_house_leanning/config/theme/shape/shape_app.dart';
@@ -18,13 +19,15 @@ import 'package:the_coffee_house_leanning/widgets/component_widget/component_lis
 import 'package:the_coffee_house_leanning/widgets/image_widget/image_widget.dart';
 
 import '../../repository/model/new_feed/new_feed.dart';
+import '../../routes/app_routes.dart';
 
 class HomePage extends GetView {
   final HomeController controller = Get.find<HomeController>();
   double padding = 5.0.wp;
 
   HomePage({super.key});
- // test barnch dev
+
+  // test barnch dev
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).viewPadding.top;
@@ -35,11 +38,8 @@ class HomePage extends GetView {
     );
   }
 
-
-
   AppBar appBar() {
-    return AppBar(
-    );
+    return AppBar();
   }
 
   Widget body(double heightStastusBar) {
@@ -57,11 +57,12 @@ class HomePage extends GetView {
         itemList: controller.itemListCarouselSilder,
       ),
       Container(
+        margin: EdgeInsets.only(bottom: 2.0.wp),
         height: 33.0.hp,
         child: listBlogPost(),
       ),
       ListItem(
-        toolBar: true,
+          toolBar: true,
           indexLive: lengthListWidgetBodySliver,
           list: controller.listMenu,
           actionItem: controller.actionClickButton,
@@ -70,11 +71,18 @@ class HomePage extends GetView {
             actionClick: controller.actionClickButton,
             height: 3.0.hp,
           )),
-      for(Widget listFliterWidget in listWidgetFilter) listFliterWidget
+      for (Widget listFliterWidget in listWidgetFilter) listFliterWidget
     ];
-    return Stack(
-        children: [
-          Container(
+    return Stack(children: [
+      Obx(() {
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? controller.listIndexLive = 4
+            : controller.listIndexLive = 3;
+        controller.checkUserEmpty.value.checkEmptyUser
+            ? listWidgetInBodySliver.insert(0, loginWidget())
+            : listWidgetInBodySliver
+                .removeWhere((element) => element == loginWidget());
+        return Container(
             margin: EdgeInsets.only(top: 8.0.hp + heightStastusBar),
             child: ScrollablePositionedList.builder(
               addAutomaticKeepAlives: true,
@@ -86,16 +94,16 @@ class HomePage extends GetView {
               },
               itemScrollController: controller.itemScrollControllerScreen,
               itemPositionsListener: controller.itemPositionsListenerScreen,
-            ),
-          ),
-          Positioned(
-            child: Obx(() => Container(
-              padding:  EdgeInsets.only(top: heightStastusBar ),
-              height: 8.0.hp + heightStastusBar,
-              decoration: controller.checkChangeIcon.value
-                  ? null
-                  : BoxDecoration(
-                  gradient: LinearGradient(
+            ));
+      }),
+      Positioned(
+        child: Obx(() => Container(
+            padding: EdgeInsets.only(top: heightStastusBar),
+            height: 8.0.hp + heightStastusBar,
+            decoration: controller.checkChangeIcon.value
+                ? null
+                : BoxDecoration(
+                    gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: <Color>[
@@ -106,30 +114,84 @@ class HomePage extends GetView {
                       ColorApp.backgourdWhite
                     ], // Gradient from https://learnui.design/tools/gradient-generator.html
                   )),
-              child: Container(
-                padding: EdgeInsets.only(
-                    right: 5.0.wp, left: 5.0.wp),
-                child: Row(
-                  children: [
-                    widgetLeading(controller.checkChangeIcon.value,
-                        controller.firstIndex.value),
-                    Spacer(),
-                    widgetAction(controller.checkChangeIcon.value,
-                        controller.firstIndex.value)
-                  ],
-                ),
-              )
-            )),
-          ),
+            child: Container(
+              padding: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp),
+              child: Row(
+                children: [
+                  widgetLeading(controller.checkChangeIcon.value,
+                      controller.firstIndex.value),
+                  Spacer(),
+                  widgetAction(controller.checkChangeIcon.value,
+                      controller.firstIndex.value)
+                ],
+              ),
+            ))),
+      ),
+    ]);
+  }
 
-        ]
+  Widget loginWidget() {
+    final textStyleTitle = TextStyleApp.fontNotoSansTitle;
+    final textStyleButton = TextStyleApp.fontNotoSansTitle;
+    final title =
+        'Sử dụng app để tính điểm và đổi những ưu đãi chỉ dành riêng ch thành viên bạn nhé!';
+    final textButton = 'ĐĂNG NHẬP';
+    return Container(
+      margin: EdgeInsets.all(5.0.wp),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(ShapeApp.full),
+          gradient: LinearGradient(
+            colors: [
+              ColorApp.primaryColorSwatch.shade800,
+              ColorApp.orangeBackground
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            stops: [0.4, 0.7],
+            tileMode: TileMode.repeated,
+          )),
+      height: 27.0.hp,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              margin:
+                  EdgeInsets.only(right: 5.0.wp, left: 5.0.wp, bottom: 5.0.wp),
+              child: Text(
+                title,
+                softWrap: true,
+                textAlign: TextAlign.center,
+                style: textStyleTitle.copyWith(color: ColorApp.backgourdWhite),
+              )),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.LOGIN_PAGE);
+            },
+            child: Container(
+              width: 60.0.wp,
+              padding: EdgeInsets.all(2.0.wp),
+              decoration: BoxDecoration(
+                  color: ColorApp.backgourdWhite.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(ShapeApp.full)),
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(right: 5.0.wp, left: 5.0.wp),
+              child: Text(
+                textButton,
+                style: textStyleButton.copyWith(color: ColorApp.backgourdWhite),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
   Widget listItemOrderFilter(int index) {
     final gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(
-        childAspectRatio: (6 / 10),
-        crossAxisCount: 2,);
+      childAspectRatio: (6 / 10),
+      crossAxisCount: 2,
+    );
     ;
     TextStyle textStyle =
         TextStyleApp.fontNotoSansTitle.copyWith(fontSize: 18.0);
@@ -146,14 +208,15 @@ class HomePage extends GetView {
           ),
         ),
         GridView.builder(
-          
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: gridDelegate,
           itemCount: listProduct.length,
           itemBuilder: (context, indexProduct) {
             return ItemOrderWidget(
-              id: controller.listMenu.elementAt(index)[2] + '_' + listProduct.elementAt(indexProduct).id,
+                id: controller.listMenu.elementAt(index)[2] +
+                    '_' +
+                    listProduct.elementAt(indexProduct).id,
                 height: 0.0,
                 width: 50.0.wp,
                 image: widgetImageNetWork(
@@ -188,21 +251,23 @@ class HomePage extends GetView {
             itemCount: listPost.length,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: (){
-                  controller.actionClickButton(listPost.keys.elementAt(index), TypeAction.BLOCK_ITEM_BLOG);
+                onTap: () {
+                  controller.actionClickButton(listPost.keys.elementAt(index),
+                      TypeAction.BLOCK_ITEM_BLOG);
                 },
                 child: ItemBlogWidget(
-                    height: height,
-                    description: listPost.keys.elementAt(index).split(":")[0],
-                    width: width,
-                    image: widgetImageNetWork(
-                        listPost[listPost.keys.elementAt(index)]!.thumbnail),
-                    time: listPost[listPost.keys.elementAt(index)]!
-                        .publish
-                        .toString(),
-                    title: listPost[listPost.keys.elementAt(index)]!
-                        .title
-                        .toString(),),
+                  height: height,
+                  description: listPost.keys.elementAt(index).split(":")[0],
+                  width: width,
+                  image: widgetImageNetWork(
+                      listPost[listPost.keys.elementAt(index)]!.thumbnail),
+                  time: listPost[listPost.keys.elementAt(index)]!
+                      .publish
+                      .toString(),
+                  title: listPost[listPost.keys.elementAt(index)]!
+                      .title
+                      .toString(),
+                ),
               );
             },
           ),
@@ -221,13 +286,16 @@ class HomePage extends GetView {
       height: 5.0.hp,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(
-          textLabel,
-          style: textStyle,
-        ),
+        children: [
+          Text(
+            textLabel,
+            style: textStyle,
+          ),
           GestureDetector(
             onTap: () {
-              Get.to(PostViewPage(newFeed:  controller.listNewFeed, actionClickButton: controller.actionClickButton));
+              Get.to(PostViewPage(
+                  newFeed: controller.listNewFeed,
+                  actionClickButton: controller.actionClickButton));
             },
             child: Row(
               children: [
@@ -274,7 +342,11 @@ class HomePage extends GetView {
       case true:
         return GestureDetector(
           onTap: () {
-            actionItemAppBar('', Get.context!, controller.itemScrollControllerScreen, controller.listIndexLive);
+            actionItemAppBar(
+                '',
+                Get.context!,
+                controller.itemScrollControllerScreen,
+                controller.listIndexLive);
           },
           child: Row(
             children: [
@@ -308,9 +380,10 @@ class HomePage extends GetView {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector (
-              onTap: (){
-                controller.appModel.userModel.checkEmptyUser = !controller.appModel.userModel.checkEmptyUser;
+            GestureDetector(
+              onTap: () {
+                controller.appModel.userModel.checkEmptyUser =
+                    !controller.appModel.userModel.checkEmptyUser;
               },
               child: Container(
                   padding: EdgeInsets.only(right: 5.0.wp),
@@ -329,7 +402,7 @@ class HomePage extends GetView {
         return Container(
           height: 12.0.wp,
           alignment: Alignment.bottomRight,
-          child:Row(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
@@ -348,15 +421,21 @@ class HomePage extends GetView {
                       color: ColorApp.primaryColorSwatch,
                       size: 5.5.wp,
                     ),
-                    Container(width: 1.0.wp,),
-                    controller.checkUserEmpty.value.checkEmptyUser ? Container() :  Text(
-                      textDiscount.toString(),
-                      style: TextStyleApp.fontNotoSansTitle,
-                    )
+                    Container(
+                      width: 1.0.wp,
+                    ),
+                    controller.checkUserEmpty.value.checkEmptyUser
+                        ? Container()
+                        : Text(
+                            textDiscount.toString(),
+                            style: TextStyleApp.fontNotoSansTitle,
+                          )
                   ],
                 ),
               ),
-              Container(width: 2.0.wp,),
+              Container(
+                width: 2.0.wp,
+              ),
               Container(
                 child: Stack(
                   children: [
@@ -374,21 +453,24 @@ class HomePage extends GetView {
                         size: 5.5.wp,
                       ),
                     ),
-                    controller.checkUserEmpty.value.checkEmptyUser ? Container() : Positioned(
-                      bottom: 6.0.wp,
-                      left: 6.0.wp,
-                      child: Container(
-                          padding: EdgeInsets.all(0.3.wp),
-                          decoration: BoxDecoration(
-                              color: ColorApp.redIcon,
-                              borderRadius: BorderRadius.circular(5.0.wp)),
-                          child:
-                          Text(
-                            textDiscount.toString(),
-                            style: TextStyleApp.fontNotoSansDescription
-                                .copyWith(color: Colors.white, fontSize: 8),
-                          )),
-                    )
+                    controller.checkUserEmpty.value.checkEmptyUser
+                        ? Container()
+                        : Positioned(
+                            bottom: 6.0.wp,
+                            left: 6.0.wp,
+                            child: Container(
+                                padding: EdgeInsets.all(0.3.wp),
+                                decoration: BoxDecoration(
+                                    color: ColorApp.redIcon,
+                                    borderRadius:
+                                        BorderRadius.circular(5.0.wp)),
+                                child: Text(
+                                  textDiscount.toString(),
+                                  style: TextStyleApp.fontNotoSansDescription
+                                      .copyWith(
+                                          color: Colors.white, fontSize: 8),
+                                )),
+                          )
                   ],
                 ),
               )
@@ -398,13 +480,14 @@ class HomePage extends GetView {
     }
   }
 
-  void actionItemAppBar(String idAction, BuildContext context, ItemScrollController controllerScroll, int indexLive) {
+  void actionItemAppBar(String idAction, BuildContext context,
+      ItemScrollController controllerScroll, int indexLive) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) {
         return GestureDetector(
-          onVerticalDragCancel: (){
+          onVerticalDragCancel: () {
             Navigator.pop(context);
           },
           child: Container(
@@ -420,19 +503,25 @@ class HomePage extends GetView {
                           Center(
                             child: Text(
                               'Danh Mục',
-                              style: TextStyleApp.fontNotoSansLarge.copyWith(fontWeight: FontWeight.w900, fontSize: 20 ),
+                              style: TextStyleApp.fontNotoSansLarge.copyWith(
+                                  fontWeight: FontWeight.w900, fontSize: 20),
                             ),
                           ),
                           Center(
                             child: GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.pop(Get.context!);
                               },
                               child: Container(
                                 padding: EdgeInsets.all(5.0.wp),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [Icon(Icons.close, size: 8.0.wp,)],
+                                  children: [
+                                    Icon(
+                                      Icons.close,
+                                      size: 8.0.wp,
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
@@ -443,7 +532,9 @@ class HomePage extends GetView {
                     Divider(),
                     Wrap(
                       children: List<Widget>.generate(
-                          controller.listMenu.length, (index) => itemList(index, controllerScroll, indexLive)),
+                          controller.listMenu.length,
+                          (index) =>
+                              itemList(index, controllerScroll, indexLive)),
                     )
                   ],
                 ),
@@ -453,9 +544,10 @@ class HomePage extends GetView {
     );
   }
 
-  Widget itemList(int index, ItemScrollController controllerScroll, int indexLive) {
+  Widget itemList(
+      int index, ItemScrollController controllerScroll, int indexLive) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         controllerScroll.jumpTo(index: index + indexLive);
       },
       child: Container(
@@ -472,7 +564,8 @@ class HomePage extends GetView {
                 controller.listMenu.elementAt(index)[1],
                 softWrap: true,
                 overflow: TextOverflow.fade,
-                style: TextStyleApp.fontNotoSansDescription.copyWith(color: Colors.black12.withAlpha(100)),
+                style: TextStyleApp.fontNotoSansDescription
+                    .copyWith(color: Colors.black12.withAlpha(100)),
               ),
             )
           ],
@@ -481,12 +574,11 @@ class HomePage extends GetView {
     );
   }
 
-  listItemOrderFilterOrderPage(int index){
-
+  listItemOrderFilterOrderPage(int index) {
     TextStyle textStyle =
-    TextStyleApp.fontNotoSansTitle.copyWith(fontSize: 18.0);
+        TextStyleApp.fontNotoSansTitle.copyWith(fontSize: 18.0);
     final listProduct =
-    controller.listProductMenuId(controller.listMenu.elementAt(index)[2]);
+        controller.listProductMenuId(controller.listMenu.elementAt(index)[2]);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -505,18 +597,21 @@ class HomePage extends GetView {
           itemCount: listProduct.length,
           itemBuilder: (context, indexProduct) {
             return ItemOrderWidget(
-                id: controller.listMenu.elementAt(index)[2] + '_' + listProduct.elementAt(indexProduct).id,
+                id: controller.listMenu.elementAt(index)[2] +
+                    '_' +
+                    listProduct.elementAt(indexProduct).id,
                 height: 30.0.wp,
                 width: 100.0.wp,
                 image: widgetImageNetWork(
                     listProduct.elementAt(indexProduct).thumbnail),
                 nameItem: listProduct.elementAt(indexProduct).name,
                 description:
-                listProduct.elementAt(indexProduct).basePrice.toString() +
-                    " đ",
+                    listProduct.elementAt(indexProduct).basePrice.toString() +
+                        " đ",
                 actionClickButton: controller.actionClickButton,
                 actionIemOrder: controller.actionClickButton);
-          },)
+          },
+        )
       ],
     );
   }

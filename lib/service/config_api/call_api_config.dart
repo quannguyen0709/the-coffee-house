@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 abstract class DioConfig{
   final BaseOptions option = BaseOptions(
     connectTimeout:  Duration(seconds: 5),
-    receiveTimeout:  Duration(seconds:  3),
+    receiveTimeout:  Duration(seconds:  5),
   );
 
 

@@ -13,7 +13,7 @@ import 'package:the_coffee_house_leanning/repository/model/discount/discount.dar
 import '../../../config/theme/color/color_app.dart';
 
 class VoucherPage extends StatelessWidget {
-  List<DiscountModel> listDiscount ;
+  List<DiscountModel> listDiscount;
 
   VoucherPage({required this.listDiscount});
 
@@ -38,14 +38,14 @@ class VoucherPage extends StatelessWidget {
             decoration: BoxDecoration(
                 border: BorderDirectional(
                     bottom: BorderSide(
-                        color: ColorApp.backgourdGrey.withOpacity(0.2)))),
+                        color: ColorApp.backgourdGrey.withOpacity(0.4)))),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: Icon(
@@ -64,23 +64,25 @@ class VoucherPage extends StatelessWidget {
           ),
         ),
         Expanded(
-            child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(6, (index) {
-              return GestureDetector(
-                onTap: () {
-                  BottomSheetVoucher().bottomSheetItemOrder(context,
-                      listDiscount.elementAt(index));
-                },
-                child: Container(
-                    margin: EdgeInsets.only(top: 2.5.wp, bottom: 2.5.wp),
-                    child: VoucherWidget()
-                        .item(listDiscount.elementAt(index ))),
-              );
-            })
+            child: Container(
+          color: ColorApp.backgourdGrey.withOpacity(0.2),
+          child: SingleChildScrollView(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: List.generate(6, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      BottomSheetVoucher().bottomSheetItemOrder(
+                          context, listDiscount.elementAt(index));
+                    },
+                    child: Container(
+                        margin: EdgeInsets.only(top: 2.5.wp, bottom: 2.5.wp, left: 5.0.wp, right: 5.0.wp),
+                        child: VoucherWidget()
+                            .item(listDiscount.elementAt(index))),
+                  );
+                })),
           ),
         ))
       ],
