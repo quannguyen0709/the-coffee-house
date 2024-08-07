@@ -32,7 +32,7 @@ class ApiApp extends DioConfig {
       newFeedsEntity = NewFeedsEntity.fromJson(data.data);
       // final test = jsonEncode(data.data);
       //print(test);
-      await hiveBox.put(newFeedHive, jsonEncode(data.data));
+       hiveBox.put(newFeedHive, jsonEncode(data.data));
       return newFeedsEntity;
     } on DioException catch (ex) {
       if (AppConstants.FRIST_LAUNCH_APP) {
@@ -40,7 +40,7 @@ class ApiApp extends DioConfig {
          return null;
       } else {
           //return (await hiveBox.get(newFeedHive)).toString();
-        return hiveBox.get(newFeedHive) == null ? null : await NewFeedsEntity.fromJson(await jsonDecode(await hiveBox.get(newFeedHive)) )  ;
+        return hiveBox.get(newFeedHive) == null ? null :  NewFeedsEntity.fromJson(await jsonDecode(await hiveBox.get(newFeedHive)) )  ;
       }
     }
   }
@@ -52,7 +52,7 @@ class ApiApp extends DioConfig {
     try {
       var data =
           await _dio.post("$baseUrlAPi/api/v5/menu", data: {"src": "TCH-WEB"});
-      await hiveBox.put(menuHive,jsonEncode(data.data)) ;
+      hiveBox.put(menuHive,jsonEncode(data.data)) ;
       menuEntity = MenuEntity.fromJson(data.data);
       return menuEntity;
     } on DioException catch (ex) {
@@ -60,7 +60,7 @@ class ApiApp extends DioConfig {
          print("menu frist launch dont respone data ");
          return null;
       } else {
-         return hiveBox.get(menuHive) == null ? null : await MenuEntity.fromJson(await jsonDecode(await hiveBox.get(menuHive)));
+         return hiveBox.get(menuHive) == null ? null :  MenuEntity.fromJson(await jsonDecode(await hiveBox.get(menuHive)));
 
       }
     }
@@ -72,7 +72,7 @@ class ApiApp extends DioConfig {
     var _dio = await dio;
     try {
       var data = await _dio.get("$baseUrlAPi/api/v5/media/media-box");
-      await hiveBox.put(mediaBoxHive, jsonEncode(data.data)) ;
+      hiveBox.put(mediaBoxHive, jsonEncode(data.data)) ;
       mediaBoxEntity = MediaBoxEntity.fromJson(data.data);
       return mediaBoxEntity;
     } on DioException catch (ex) {
@@ -81,7 +81,7 @@ class ApiApp extends DioConfig {
          return null;
       } else {
         final test = await hiveBox.get(mediaBoxHive);
-        return hiveBox.get(mediaBoxHive) == null ? null : await MediaBoxEntity.fromJson(await jsonDecode(test));
+        return hiveBox.get(mediaBoxHive) == null ? null :  MediaBoxEntity.fromJson(await jsonDecode(test));
       }
     }
   }
@@ -92,7 +92,7 @@ class ApiApp extends DioConfig {
     var _dio = await dio;
     try {
       var data = await _dio.get("$baseUrlAPi/api/v5/stores/all");
-      await hiveBox.put(storeHive, jsonEncode(data.data));
+      hiveBox.put(storeHive, jsonEncode(data.data));
       storesEntity = StoresEntity.fromJson(data.data);
       return storesEntity;
     } on DioException catch (ex) {
@@ -100,7 +100,7 @@ class ApiApp extends DioConfig {
          print("store frist launch dont respone data " );
          return null;
       } else {
-        return hiveBox.get(storeHive) == null ? null : await StoresEntity.fromJson(await jsonDecode(await hiveBox.get(storeHive)));
+        return hiveBox.get(storeHive) == null ? null :  StoresEntity.fromJson(await jsonDecode(await hiveBox.get(storeHive)));
       }
     }
   }

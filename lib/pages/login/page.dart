@@ -7,13 +7,20 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:the_coffee_house_leanning/config/theme/shape/shape_app.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
+import 'package:the_coffee_house_leanning/pages/discount/page.dart';
+import 'package:the_coffee_house_leanning/pages/home/binding.dart';
+import 'package:the_coffee_house_leanning/pages/home/logic.dart';
+import 'package:the_coffee_house_leanning/pages/home/page.dart';
 import 'package:the_coffee_house_leanning/pages/login/logic.dart';
+import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
+import 'package:the_coffee_house_leanning/routes/app_routes.dart';
 
 import '../../config/theme/color/color_app.dart';
 import '../../config/theme/text/text_app.dart';
 import '../../constants/app.dart';
 
 class LoginPage extends GetView<LoginController> {
+  final ManagerPageController managerPageController = ManagerPageController();
   Rx<double> checkShowKeyboard = 0.0.obs;
   Rx<String> checkPhoneNumber = '0'.obs;
 
@@ -105,18 +112,34 @@ class LoginPage extends GetView<LoginController> {
             ),
           )),
           Obx(
-          ()=> Container(
-              height: 12.0.wp,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(ShapeApp.extraLarge),
-                color: checkPhoneNumber.value.isPhoneNumber ? ColorApp.primaryColorSwatch.shade700 : ColorApp.backgourdGrey.withOpacity(0.7)
+          ()=> GestureDetector(
+            onTap: () {
+              if(checkPhoneNumber.value.isPhoneNumber  ){
+                controller.appModel.userModel.phone = checkPhoneNumber.value;
+                controller.checkEmptyUser.value = controller.appModel.userModel.checkEmptyUser;
+                if(managerPageController.routePageBack == AppRoutes.HOME){
+                  Get.back();
+                }else if( managerPageController.routePageBack == AppRoutes.DISCOUNT){
+                  Get.back();
+                }else if(managerPageController.routePageBack == AppRoutes.OTHER_SETTINGS){
+                  Get.back();
+                }
+              }
+
+            },
+            child: Container(
+                height: 12.0.wp,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(ShapeApp.extraLarge),
+                  color: checkPhoneNumber.value.isPhoneNumber ? ColorApp.primaryColorSwatch.shade700 : ColorApp.backgourdGrey.withOpacity(0.7)
+                ),
+                child: Text(
+                  'Đăng nhập',
+                  style: TextStyleApp.fontNotoSansTitle.copyWith(color: ColorApp.backgourdWhite),
+                ),
               ),
-              child: Text(
-                'Đăng nhập',
-                style: TextStyleApp.fontNotoSansTitle.copyWith(color: ColorApp.backgourdWhite),
-              ),
-            ),
+          ),
           )
         ],
       ),

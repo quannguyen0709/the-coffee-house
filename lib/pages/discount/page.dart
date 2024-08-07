@@ -16,6 +16,7 @@ import 'package:the_coffee_house_leanning/pages/discount/widget/ticket_clipper_w
 import 'package:the_coffee_house_leanning/pages/discount/widget/voucher_bottom_sheet.dart';
 import 'package:the_coffee_house_leanning/pages/discount/widget/voucher_page.dart';
 import 'package:the_coffee_house_leanning/pages/discount/widget/voucher_widget.dart';
+import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 import 'package:the_coffee_house_leanning/routes/app_pages.dart';
 import 'package:the_coffee_house_leanning/routes/app_routes.dart';
 
@@ -23,6 +24,7 @@ import '../../config/theme/text/text_app.dart';
 import '../../repository/model/rank_infor/rank_infor_model.dart';
 
 class DiscountPage extends GetView<DiscountController> {
+  final ManagerPageController managerPageController = ManagerPageController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -37,7 +39,7 @@ class DiscountPage extends GetView<DiscountController> {
       color: ColorApp.backgourdGrey.withOpacity(0.1),
       height: 100.0.hp,
       width: 100.0.wp,
-      child: Obx(() => controller.checkUser.value.checkEmptyUser ? bodyNoLogin(context, heightStatusBar) : bodyHasUser(context, heightStatusBar)),
+      child: Obx(() => controller.checkUser.value ? bodyNoLogin(context, heightStatusBar) : bodyHasUser(context, heightStatusBar)),
     );
   }
 
@@ -213,6 +215,7 @@ class DiscountPage extends GetView<DiscountController> {
               )),
           GestureDetector(
             onTap: () {
+              managerPageController.routePageBack = AppRoutes.DISCOUNT;
                Get.toNamed(AppRoutes.LOGIN_PAGE);
             },
             child: Container(

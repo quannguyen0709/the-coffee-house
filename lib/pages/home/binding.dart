@@ -7,7 +7,6 @@ class HomeBinding extends Bindings{
   void dependencies() {
     // TODO: implement dependencies
     Get.put(HomeController());
-    Get.put(ManagerPageController());
   }
 
 }

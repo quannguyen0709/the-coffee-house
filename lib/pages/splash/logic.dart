@@ -24,8 +24,8 @@ class SplashController extends GetxController {
   }
 
   Future<void> initService(BuildContext context) async {
-    await Get.putAsync(() => CheckInernet(context: context).onInit(),
-        permanent: true);
+    // await Get.putAsync(() => CheckInernet(context: context).onInit(),
+    //     permanent: true);
      Get.put(CallApi(), permanent: true);
      await CallApi().callApiApp();
 

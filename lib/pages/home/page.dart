@@ -11,6 +11,7 @@ import 'package:the_coffee_house_leanning/constants/extension.dart';
 import 'package:the_coffee_house_leanning/generated/json/base/json_convert_content.dart';
 import 'package:the_coffee_house_leanning/pages/home/logic.dart';
 import 'package:the_coffee_house_leanning/pages/home/widget/post_view_page.dart';
+import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 import 'package:the_coffee_house_leanning/widgets/carousel_slider/carousel_silde.dart';
 import 'package:the_coffee_house_leanning/widgets/component_widget/component_item_blog/item_blog_widget.dart';
 import 'package:the_coffee_house_leanning/widgets/component_widget/component_item_order/item_order_wiget.dart';
@@ -23,6 +24,7 @@ import '../../routes/app_routes.dart';
 
 class HomePage extends GetView {
   final HomeController controller = Get.find<HomeController>();
+  final ManagerPageController managerPageController = ManagerPageController();
   double padding = 5.0.wp;
 
   HomePage({super.key});
@@ -52,6 +54,7 @@ class HomePage extends GetView {
     final listWidgetFilter = List<Widget>.generate(
         controller.listMenu.length, (index) => listItemOrderFilter(index));
     final List<Widget> listWidgetInBodySliver = [
+      loginWidget(),
       CarouselSliderWidget(
         height: 20.0.hp,
         itemList: controller.itemListCarouselSilder,
@@ -74,28 +77,26 @@ class HomePage extends GetView {
       for (Widget listFliterWidget in listWidgetFilter) listFliterWidget
     ];
     return Stack(children: [
-      Obx(() {
-        controller.checkUserEmpty.value.checkEmptyUser
-            ? controller.listIndexLive = 4
-            : controller.listIndexLive = 3;
-        controller.checkUserEmpty.value.checkEmptyUser
-            ? listWidgetInBodySliver.insert(0, loginWidget())
-            : listWidgetInBodySliver
-                .removeWhere((element) => element == loginWidget());
-        return Container(
-            margin: EdgeInsets.only(top: 8.0.hp + heightStastusBar),
-            child: ScrollablePositionedList.builder(
-              addAutomaticKeepAlives: true,
-              minCacheExtent: 0,
-              shrinkWrap: true,
-              itemCount: listWidgetInBodySliver.length,
-              itemBuilder: (context, index) {
+      Container(
+          margin: EdgeInsets.only(top: 8.0.hp + heightStastusBar),
+          child: ScrollablePositionedList.builder(
+            addAutomaticKeepAlives: true,
+            minCacheExtent: 0,
+            shrinkWrap: true,
+            itemCount: listWidgetInBodySliver.length,
+            itemBuilder: (context, index) {
+              if(index == 0){
+                return Obx(() {
+                  return Container(height: controller.checkUserEmpty.value ?   27.0.hp : 1.0 ,child: listWidgetInBodySliver.first);
+                },);
+              }else{
                 return listWidgetInBodySliver.elementAt(index);
-              },
-              itemScrollController: controller.itemScrollControllerScreen,
-              itemPositionsListener: controller.itemPositionsListenerScreen,
-            ));
-      }),
+              }
+
+            },
+            itemScrollController: controller.itemScrollControllerScreen,
+            itemPositionsListener: controller.itemPositionsListenerScreen,
+          )),
       Positioned(
         child: Obx(() => Container(
             padding: EdgeInsets.only(top: heightStastusBar),
@@ -166,6 +167,7 @@ class HomePage extends GetView {
               )),
           GestureDetector(
             onTap: () {
+              managerPageController.routePageBack = AppRoutes.HOME;
               Get.toNamed(AppRoutes.LOGIN_PAGE);
             },
             child: Container(
@@ -382,8 +384,8 @@ class HomePage extends GetView {
           children: [
             GestureDetector(
               onTap: () {
-                controller.appModel.userModel.checkEmptyUser =
-                    !controller.appModel.userModel.checkEmptyUser;
+                // controller.appModel.userModel.checkEmptyUser =
+                //     !controller.appModel.userModel.checkEmptyUser;
               },
               child: Container(
                   padding: EdgeInsets.only(right: 5.0.wp),
@@ -424,7 +426,7 @@ class HomePage extends GetView {
                     Container(
                       width: 1.0.wp,
                     ),
-                    controller.checkUserEmpty.value.checkEmptyUser
+                    controller.checkUserEmpty.value
                         ? Container()
                         : Text(
                             textDiscount.toString(),
@@ -453,7 +455,7 @@ class HomePage extends GetView {
                         size: 5.5.wp,
                       ),
                     ),
-                    controller.checkUserEmpty.value.checkEmptyUser
+                    controller.checkUserEmpty.value
                         ? Container()
                         : Positioned(
                             bottom: 6.0.wp,

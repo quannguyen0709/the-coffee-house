@@ -20,11 +20,11 @@ enum TypeAction { BLOCK_ITEM_SEARCH, BLOCK_ITEM_BLOG, BLOCK_ITEM_ORDER , BLOCK_I
 
 class HomeController extends GetxController {
 
-  final chekcInternet = Get.find<CheckInernet>();
+  //final chekcInternet = Get.find<CheckInernet>();
 
   AppModel appModel = AppModel();
 
-  final checkUserEmpty = AppModel().userModel.obs;
+  final checkUserEmpty = ManagerPageController().checkEmptyUser;
 
   final managerControll = ManagerPageController.checkScroll.elementAt(0);
 
@@ -36,7 +36,7 @@ class HomeController extends GetxController {
 
 
   List<ItemPosition> visibleIndexes = [];
-  int listIndexLive = 3;
+  int listIndexLive = 4;
   final  firstIndex = 0.obs;
   final checkChangeIcon = false.obs;
 

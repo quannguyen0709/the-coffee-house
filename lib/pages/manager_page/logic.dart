@@ -9,6 +9,7 @@ import 'package:the_coffee_house_leanning/pages/home/logic.dart';
 import 'package:the_coffee_house_leanning/pages/order/logic.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/logic.dart';
 import 'package:the_coffee_house_leanning/pages/shop/logic.dart';
+import 'package:the_coffee_house_leanning/repository/model/user/user_model.dart';
 import 'package:the_coffee_house_leanning/routes/app_pages.dart';
 import 'package:the_coffee_house_leanning/service/internet/check_internet.dart';
 
@@ -16,17 +17,24 @@ import '../../constants/app.dart';
 
 class ManagerPageController extends GetxController{
   final string = 5;
-  final chekcInternet = Get.find<CheckInernet>();
+  //final chekcInternet = Get.find<CheckInernet>();
+  String routePageBack = '';
   final bottomNavigationBar = AppPages.bottomNavigationBar;
   final  currentPage = 0.obs;
   final Color backGroundColor = ColorApp.backgourdWhite;
   final List<Color> selectColor = [ColorApp.primaryColorSwatch.shade900,  ColorApp.primaryColor];
   final Color color = ColorApp.iconColor;
+  final checkEmptyUser = UserModel().checkEmptyUser.obs;
   final List<String> titleBottomNavigationBar = ["Trang chủ","Đặt hàng ","Cửa hàng", " Ưu đãi ", "Khác"];
   final List<IconData> iconBottomNavigationBar = [Icons.home_outlined, Icons.local_cafe_outlined, Icons.storefront, Icons.confirmation_number, Icons.list ];
 
   static final checkScroll = [false.obs, false.obs, false.obs, false.obs, false.obs];
 
+  static final ManagerPageController _instance  = ManagerPageController._singleton();
+  ManagerPageController._singleton();
+  factory ManagerPageController(){
+    return _instance;
+  }
 
   @override
    onInit(){
@@ -39,6 +47,7 @@ class ManagerPageController extends GetxController{
   void onSelectItemNavigationBottom(int item){
     if(item != currentPage.value){
       currentPage.value = item;
+      bottomNavigationBar[currentPage.value].page();
     }
     else if (item == currentPage.value){
       switch(item){
@@ -62,7 +71,7 @@ class ManagerPageController extends GetxController{
 
 
   Future<void> checkInternet()async{
-    await chekcInternet.voidCheckInternet();
+    //await chekcInternet.voidCheckInternet();
   }
 
    bindingPage()  {

@@ -28,6 +28,7 @@ class UserModel{
 
   set phone(String value) {
     _phone = value;
+    checkEmptyUser = false;
   }
 
   String get passWord => _passWord;

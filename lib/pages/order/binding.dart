@@ -9,7 +9,6 @@ class OrderBinding extends Bindings{
     // TODO: implement dependencies
     Get.put(OrderController());
     Get.put(HomeController());
-    Get.put(ManagerPageController());
   }
 
 }

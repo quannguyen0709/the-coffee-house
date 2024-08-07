@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:the_coffee_house_leanning/constants/extension.dart';
+import 'package:the_coffee_house_leanning/pages/manager_page/logic.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/logic.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/widget/contact_page.dart';
 import 'package:the_coffee_house_leanning/pages/other_settings/widget/list_item_widget.dart';
@@ -16,10 +18,11 @@ import '../../config/theme/text/text_app.dart';
 import '../../constants/app.dart';
 
 class OtherSettingPage extends GetView<OtherSettingController> {
+  final ManagerPageController managerPageController = ManagerPageController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return bodyPage(context);
+    return Obx(() => bodyPage(context));
   }
 
   Widget bodyPage(BuildContext context) {
@@ -122,10 +125,10 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               size: heightWidget * 0.7,
               color: ColorApp.primaryColor,
             ),
-            controller.checkUserEmpty.value.checkEmptyUser
+            controller.checkUserEmpty.value
                 ? Container()
                 : Spacer(),
-            controller.checkUserEmpty.value.checkEmptyUser
+            controller.checkUserEmpty.value
                 ? Container()
                 : Text(
                     numberTicket.toString(),
@@ -165,7 +168,7 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               size: 0.7 * heightWidget,
               color: ColorApp.textGrey,
             ),
-            controller.checkUserEmpty.value.checkEmptyUser
+            controller.checkUserEmpty.value
                 ? Container()
                 : Positioned(
                     bottom: 0.55 * heightWidget,
@@ -207,7 +210,7 @@ class OtherSettingPage extends GetView<OtherSettingController> {
               children: <Widget>[
                 extensionWidget(),
                 supportWidget(),
-                accountWidget(),
+                Obx(()=> accountWidget()),
                 Container(
                   height: 7.0.wp,
                 )
@@ -226,25 +229,50 @@ class OtherSettingPage extends GetView<OtherSettingController> {
       ItemData('Thông tin cá nhân', Icons.person_outline_sharp,
           url: '',
           actionClick: (String url, String name) {
-        controller.checkUserEmpty.value.checkEmptyUser
+            managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+        controller.checkUserEmpty.value
             ? Get.toNamed(AppRoutes.LOGIN_PAGE)
             : null;
       }),
       ItemData('Địa chỉ đã lưu', Icons.bookmark_border_outlined,url: '',
           actionClick: (String url, String name) {
-        controller.checkUserEmpty.value.checkEmptyUser
+            managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+        controller.checkUserEmpty.value
             ? Get.toNamed(AppRoutes.LOGIN_PAGE)
             : null;
       }),
-      ItemData('Cài đặt', Icons.settings_outlined),
+      ItemData('Cài đặt', Icons.settings_outlined, url: '', actionClick: (url, title) {
+        managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+      },),
       ItemData(
-          controller.checkUserEmpty.value.checkEmptyUser
+          controller.checkUserEmpty.value
               ? 'Đăng nhập'
               : 'Đăng xuất',url: '',
           Icons.output, actionClick: (String url, String name) {
-        controller.checkUserEmpty.value.checkEmptyUser
-            ? Get.toNamed(AppRoutes.LOGIN_PAGE)
-            : null;
+            if(controller.checkUserEmpty.value){
+              managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+              Get.toNamed(AppRoutes.LOGIN_PAGE);
+            }else if(!controller.checkUserEmpty.value ){
+              controller.appModel.userModel.phone = '';
+              controller.appModel.userModel.checkEmptyUser = true;
+              showDialog(context: Get.context!, builder: (context) {
+                return Container(
+                  padding: EdgeInsets.only(top: 45.0.hp, bottom: 45.0.hp, right: 40.0.wp, left: 40.0.wp),
+                  child: const LoadingIndicator(
+                      indicatorType: Indicator.ballPulse, /// Required, The loading type of the widget
+                      colors: const [Colors.white],       /// Optional, The color collections
+                      strokeWidth: 1,                     /// Optional, The stroke of the line, only applicable to widget which contains line
+                      //backgroundColor: ColorApp.backgourdGrey,      /// Optional, Background of the widget
+                      pathBackgroundColor: Colors.black   /// Optional, the stroke backgroundColor
+                  ),
+                );
+              },);
+              Future.delayed(const Duration(seconds: 5), () {
+                controller.checkUserEmpty.value = controller.appModel.userModel.checkEmptyUser;
+                Get.back();
+              });
+            }
+
       })
     ];
     Widget listItemWidget = ListItemWidget().listItemOption(listItemData);
@@ -272,7 +300,8 @@ class OtherSettingPage extends GetView<OtherSettingController> {
     List<ItemData> listItemData = [
       ItemData('Đánh giá đơn hàng', Icons.star_border,url: '',
           actionClick: (String url, String name) {
-        controller.checkUserEmpty.value.checkEmptyUser
+            managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+        controller.checkUserEmpty.value
             ? Get.toNamed(AppRoutes.LOGIN_PAGE)
             : null;
       }),
@@ -310,7 +339,8 @@ class OtherSettingPage extends GetView<OtherSettingController> {
     List<ItemData> list = [
       ItemData('Lịch sử đơn hàng', Icons.history,url: '',
           actionClick: (String url, String name) {
-        controller.checkUserEmpty.value.checkEmptyUser
+            managerPageController.routePageBack = AppRoutes.OTHER_SETTINGS;
+        controller.checkUserEmpty.value
             ? Get.toNamed(AppRoutes.LOGIN_PAGE)
             : null;
       }),
