@@ -46,14 +46,14 @@ class StoreBottomSheet extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: ColorApp.backgourdWhite,
-                          borderRadius:
-                              BorderRadius.circular(ShapeApp.extraLarge)),
+                  Container(
+                    height: 90.0.hp,
+                    width: 100.0.wp,
+                    decoration: BoxDecoration(
+                        color: ColorApp.backgourdWhite,
+                        borderRadius:
+                        BorderRadius.circular(ShapeApp.extraLarge)),
 
-                    ),
                   ),
                   SingleChildScrollView(
                     controller: scrollController,
@@ -103,10 +103,9 @@ class StoreBottomSheet extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: storeData.images.length,
                   itemBuilder: (context, index) {
-                    return Expanded(
-                        child: widgetImageNetWork(
-                            storeData.images.elementAt(index),
-                            topBorder: true));
+                    return widgetImageNetWork(
+                        storeData.images.elementAt(index),
+                        topBorder: true);
                   },
                 ),
         ),

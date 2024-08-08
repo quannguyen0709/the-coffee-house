@@ -283,16 +283,14 @@ class BottomApppSheetOrder {
       color: ColorApp.textGrey,
       height: 45.0.hp,
       child: listImage.length == 1
-          ? Expanded(
-          child: widgetImageNetWork(listImage.first,
-              height: 45.0.hp, width: 100.0.wp))
+          ? widgetImageNetWork(listImage.first,
+          height: 45.0.hp, width: 100.0.wp)
           : ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: listImage!.length,
         itemBuilder: (context, index) {
-          return Expanded(
-              child: widgetImageNetWork(listImage.elementAt(index),
-                  topBorder: true));
+          return widgetImageNetWork(listImage.elementAt(index),
+              topBorder: true);
         },
       ),
     );
